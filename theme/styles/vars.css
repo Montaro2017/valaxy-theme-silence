@@ -1,0 +1,29 @@
+:root {
+  --loading-bg-color: #b0b0b0;
+}
+
+[mode='light'] {
+  --blog-bg-color: #fff;
+  --text-color: #596172;
+  --border-color: #eef2f8;
+  --catalog-bg-color: #fff;
+  --panel-bg-color: #f8f8f8;
+  --code-bg-color: #f1f3f4;
+  --code-color: #bababa;
+  --pane-box-shadow: 0px 1px 15px #e6e6e6;
+  --toolbar-box-shadow: 0 2px 4px 1px #e8e8e8;
+  --loading-bg-color: #fff;
+}
+
+[mode='dark'] {
+  --blog-bg-color: #202020;
+  --text-color: #d8d8d8;
+  --border-color: #2f2f2f;
+  --catalog-bg-color: #252525;
+  --panel-bg-color: #252525;
+  --code-bg-color: #3c3d40;
+  --code-color: #9aa0a6;
+  --pane-box-shadow: 0px 1px 15px #0a0a0a;
+  --toolbar-box-shadow: 0 2px 4px 1px #151515;
+  --loading-bg-color: #222;
+}
