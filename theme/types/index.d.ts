@@ -13,7 +13,7 @@ export interface ThemeConfig extends DefaultTheme.Config {
 
   header?: Partial<{
     title: string
-    navItems: NavItem[]
+    navItems: NavItemWithChildren[]
   }>
 
   sidebar: {
@@ -41,8 +41,13 @@ export interface ThemeConfig extends DefaultTheme.Config {
 }
 
 export interface NavItem {
-  text: string
-  link: string
+  title: string
+  url?: string
+  target?: string
+}
+
+export interface NavItemWithChildren extends NavItem {
+  children?: NavItem[]
 }
 
 export type ThemeUserConfig = Partial<ThemeConfig>

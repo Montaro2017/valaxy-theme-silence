@@ -23,7 +23,7 @@ const count = computed(() => props.tag[1].count)
   white-space: nowrap;
   border-radius: 4px;
   overflow: hidden;
-  padding: 5px 8px;
+  padding: 0 12px;
   display: inline-block;
   margin: 0 6px 6px 0;
   transition: all 0.3s ease;

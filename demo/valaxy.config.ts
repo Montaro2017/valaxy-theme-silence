@@ -9,6 +9,39 @@ export default defineConfig<ThemeConfig>({
   theme: 'starter',
 
   themeConfig: {
+    header: {
+      navItems: [
+        {
+          title: '首页',
+          url: '/',
+        },
+        {
+          title: 'Github',
+          children: [
+            {
+              title: 'Github',
+              url: 'https://github.com/montaro2017',
+            },
+            {
+              title: 'Gitee',
+              url: 'https://gitee.com/montaro2017',
+            },
+          ],
+        },
+        {
+          title: '分类',
+          url: '/categories',
+        },
+        {
+          title: '标签',
+          url: '/tags',
+        },
+        {
+          title: '归档',
+          url: '/archives',
+        },
+      ],
+    },
     sidebar: {
       avatar: '/assets/avatar.jpg',
       intro: '你所热爱的，就是你的生活',

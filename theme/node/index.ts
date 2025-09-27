@@ -30,20 +30,20 @@ export const defaultThemeConfig: ThemeConfig = {
     // 头部导航
     navItems: [
       {
-        text: '首页',
-        link: '/',
+        title: '首页',
+        url: '/',
       },
       {
-        text: '分类',
-        link: '/categories',
+        title: '分类',
+        url: '/categories',
       },
       {
-        text: '标签',
-        link: '/tags',
+        title: '标签',
+        url: '/tags',
       },
       {
-        text: '归档',
-        link: '/archives',
+        title: '归档',
+        url: '/archives',
       },
     ],
   },

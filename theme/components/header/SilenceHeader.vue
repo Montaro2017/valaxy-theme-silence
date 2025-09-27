@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
-import { useThemeConfig } from '../composables'
+import { useThemeConfig } from '../../composables'
 
 const siteConfig = useSiteConfig()
 const themeConfig = useThemeConfig()
@@ -21,11 +21,7 @@ const navItems = computed(() => themeConfig.value.header?.navItems ?? [])
       </app-link>
     </div>
     <div class="silence-header-navigator">
-      <div v-for="item in navItems" :key="item.text" class="silence-header-nav-item">
-        <app-link :to="item.link">
-          {{ item.text }}
-        </app-link>
-      </div>
+      <silence-header-nav-item v-for="item in navItems" :key="item.title" :item="item" />
     </div>
   </div>
 </template>
