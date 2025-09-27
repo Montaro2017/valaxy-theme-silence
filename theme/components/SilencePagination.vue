@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{
   total: number
   pageSize: number
   pageNum?: number
+  href?: (page: number) => string
 }>(), {
   pageNum: 1,
 })
@@ -60,43 +61,55 @@ const displayRightButtons = computed(() => {
   return rightButtons.value.slice(0, -2)
 })
 
-const hasPrev = computed(() => {
-  return pageNum.value > 1
+const prev = computed(() => {
+  return pageNum.value <= 1 ? null : pageNum.value - 1
 })
 
-const hasNext = computed(() => {
-  return pageNum.value < maxPageNum.value
+const next = computed(() => {
+  return pageNum.value >= maxPageNum.value ? null : pageNum.value + 1
 })
 </script>
 
 <template>
   <div class="silence-pagination">
-    <silence-button v-if="hasPrev" class="silence-patination-item">
-      上一页
+    <silence-button v-if="prev" class="silence-patination-item">
+      <app-link :to="href?.(prev ?? 1) ?? '#'">
+        上一页
+      </app-link>
     </silence-button>
     <silence-button v-if="leftEllipsis" class="silence-patination-item">
-      1
+      <app-link :to="href?.(1) ?? '#'">
+        1
+      </app-link>
     </silence-button>
     <div v-if="leftEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
     <silence-button v-for="n in displayLeftButtons" :key="n" class="silence-patination-item">
-      {{ n }}
+      <app-link :to="href?.(n) ?? '#'">
+        {{ n }}
+      </app-link>
     </silence-button>
     <silence-button class="silence-patination-item active">
       {{ pageNum }}
     </silence-button>
     <silence-button v-for="n in displayRightButtons" :key="n" class="silence-patination-item">
-      {{ n }}
+      <app-link :to="href?.(n) ?? '#'">
+        {{ n }}
+      </app-link>
     </silence-button>
     <div v-if="rightEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
     <silence-button v-if="rightEllipsis" class="silence-patination-item">
-      {{ maxPageNum }}
+      <app-link :to="href?.(maxPageNum) ?? '#'">
+        {{ maxPageNum }}
+      </app-link>
     </silence-button>
-    <silence-button v-if="hasNext" class="silence-patination-item">
-      下一页
+    <silence-button v-if="next" class="silence-patination-item">
+      <app-link :to="href?.(next ?? maxPageNum) ?? '#'">
+        下一页
+      </app-link>
     </silence-button>
   </div>
 </template>
@@ -105,6 +118,8 @@ const hasNext = computed(() => {
 .silence-pagination {
   display: flex;
   gap: 8px;
+  font-weight: 300;
+  font-size: 12px;
   margin-top: 16px;
   justify-content: end;
 }
