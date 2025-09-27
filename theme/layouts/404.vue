@@ -1,5 +1,5 @@
 <template>
-  <silence-layout :header="false" :footer="false" :sidebar="false">
+  <silence-layout :sidebar="false">
     <router-view />
   </silence-layout>
 </template>

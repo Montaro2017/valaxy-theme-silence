@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import type { ThemeConfig } from 'theme/types'
-
-import { useSiteConfig, useThemeConfig } from 'valaxy'
+import { useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
+import { useThemeConfig } from '../../composables'
 
-const themeConfig = useThemeConfig<ThemeConfig>()
+const themeConfig = useThemeConfig()
 const avatar = computed(() => themeConfig.value.sidebar.avatar)
 
 const siteConfig = useSiteConfig()

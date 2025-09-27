@@ -35,15 +35,15 @@ export const defaultThemeConfig: ThemeConfig = {
       },
       {
         text: '分类',
-        link: '/',
+        link: '/categories',
       },
       {
         text: '标签',
-        link: '/',
+        link: '/tags',
       },
       {
         text: '归档',
-        link: '/',
+        link: '/archives',
       },
     ],
   },

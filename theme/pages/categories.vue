@@ -1,0 +1,3 @@
+<template>
+  <silence-categories />
+</template>

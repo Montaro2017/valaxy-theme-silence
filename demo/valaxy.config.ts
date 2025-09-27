@@ -10,9 +10,10 @@ export default defineConfig<ThemeConfig>({
 
   themeConfig: {
     sidebar: {
-      avatar: './assets/avatar.jpg',
+      avatar: '/assets/avatar.jpg',
       intro: '你所热爱的，就是你的生活',
       tagLimit: 3,
+      categoryLimit: 4,
     },
     footer: {
       copyright: 'Copyright © 2025 XXXXX',

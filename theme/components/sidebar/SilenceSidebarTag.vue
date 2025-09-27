@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { ThemeConfig } from 'theme/types'
-import { useTags, useThemeConfig } from 'valaxy'
+import { useTags } from 'valaxy'
 import { computed } from 'vue'
+import { useThemeConfig } from '../../composables'
 
-const themeConfig = useThemeConfig<ThemeConfig>()
+const themeConfig = useThemeConfig()
 
 const tagLimit = computed(() => themeConfig.value.sidebar.tagLimit ?? 0)
 const tags = useTags()

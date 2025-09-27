@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { ThemeConfig } from 'theme/types'
-import { useSiteConfig, useThemeConfig } from 'valaxy'
+import { useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
+import { useThemeConfig } from '../composables'
 
 const siteConfig = useSiteConfig()
-const themeConfig = useThemeConfig<ThemeConfig>()
+const themeConfig = useThemeConfig()
 
 const title = computed(() => {
   return themeConfig.value.header?.title ?? siteConfig.value.author.name ?? ''

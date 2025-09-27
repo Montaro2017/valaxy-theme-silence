@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { ThemeConfig } from 'theme/types'
-import { useAppStore, useThemeConfig } from 'valaxy'
+import { useAppStore } from 'valaxy'
 import { computed } from 'vue'
+import { useThemeConfig } from '../composables'
 
 const props = withDefaults(defineProps<{
   header?: boolean
@@ -19,7 +19,7 @@ const mode = computed(() => {
   return appStore.isDark ? 'dark' : 'light'
 })
 
-const themeConfig = useThemeConfig<ThemeConfig>()
+const themeConfig = useThemeConfig()
 
 const colors = computed(() => {
   return themeConfig.value.colors

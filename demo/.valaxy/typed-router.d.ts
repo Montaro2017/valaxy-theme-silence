@@ -22,13 +22,19 @@ declare module 'vue-router/auto-routes' {
     '/[...path]': RouteRecordInfo<'/[...path]', '/:path(.*)', { path: ParamValue<true> }, { path: ParamValue<false> }>,
     '/about': RouteRecordInfo<'/about', '/about', Record<never, never>, Record<never, never>>,
     '/archives/': RouteRecordInfo<'/archives/', '/archives', Record<never, never>, Record<never, never>>,
+    '/categories': RouteRecordInfo<'/categories', '/categories', Record<never, never>, Record<never, never>, '/categories/'>,
     '/categories/': RouteRecordInfo<'/categories/', '/categories', Record<never, never>, Record<never, never>>,
     '/notes/': RouteRecordInfo<'/notes/', '/notes', Record<never, never>, Record<never, never>>,
     '/posts/draft': RouteRecordInfo<'/posts/draft', '/posts/draft', Record<never, never>, Record<never, never>>,
     '/posts/hello-valaxy': RouteRecordInfo<'/posts/hello-valaxy', '/posts/hello-valaxy', Record<never, never>, Record<never, never>>,
     '/posts/i18n': RouteRecordInfo<'/posts/i18n', '/posts/i18n', Record<never, never>, Record<never, never>>,
+    '/posts/post1': RouteRecordInfo<'/posts/post1', '/posts/post1', Record<never, never>, Record<never, never>>,
+    '/posts/post2': RouteRecordInfo<'/posts/post2', '/posts/post2', Record<never, never>, Record<never, never>>,
+    '/posts/post3': RouteRecordInfo<'/posts/post3', '/posts/post3', Record<never, never>, Record<never, never>>,
+    '/posts/post4': RouteRecordInfo<'/posts/post4', '/posts/post4', Record<never, never>, Record<never, never>>,
     '/posts/test': RouteRecordInfo<'/posts/test', '/posts/test', Record<never, never>, Record<never, never>>,
-    '/tags/': RouteRecordInfo<'/tags/', '/tags', Record<never, never>, Record<never, never>>,
+    '/tag/[tag]': RouteRecordInfo<'/tag/[tag]', '/tag/:tag', { tag: ParamValue<true> }, { tag: ParamValue<false> }>,
+    '/tags': RouteRecordInfo<'/tags', '/tags', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -46,7 +52,7 @@ declare module 'vue-router/auto-routes' {
       routes: '/'
       views: never
     }
-    '../node_modules/.pnpm/valaxy@0.26.6_@babel+parser_f75f45aa7c3eef36be8414c3bede4b7b/node_modules/valaxy/client/pages/[...path].vue': {
+    '../theme/pages/[...path].vue': {
       routes: '/[...path]'
       views: never
     }
@@ -57,6 +63,10 @@ declare module 'vue-router/auto-routes' {
     'pages/archives/index.md': {
       routes: '/archives/'
       views: never
+    }
+    '../theme/pages/categories.vue': {
+      routes: '/categories' | '/categories/'
+      views: 'default'
     }
     'pages/categories/index.md': {
       routes: '/categories/'
@@ -78,12 +88,32 @@ declare module 'vue-router/auto-routes' {
       routes: '/posts/i18n'
       views: never
     }
+    'pages/posts/post1.md': {
+      routes: '/posts/post1'
+      views: never
+    }
+    'pages/posts/post2.md': {
+      routes: '/posts/post2'
+      views: never
+    }
+    'pages/posts/post3.md': {
+      routes: '/posts/post3'
+      views: never
+    }
+    'pages/posts/post4.md': {
+      routes: '/posts/post4'
+      views: never
+    }
     'pages/posts/test.md': {
       routes: '/posts/test'
       views: never
     }
-    'pages/tags/index.md': {
-      routes: '/tags/'
+    '../theme/pages/tag/[tag].vue': {
+      routes: '/tag/[tag]'
+      views: never
+    }
+    '../theme/pages/tags.vue': {
+      routes: '/tags'
       views: never
     }
   }

@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import type { ThemeConfig } from 'theme/types'
-import { useThemeConfig } from 'valaxy'
 import valaxyPkg from 'valaxy/package.json'
 import { computed } from 'vue'
+import { useThemeConfig } from '../composables'
 import themePkg from '../package.json'
 
-const themeConfig = useThemeConfig<ThemeConfig>()
+const themeConfig = useThemeConfig()
 const copyright = computed(() => themeConfig.value.footer?.copyright)
 const beian = computed(() => themeConfig.value.footer?.beian)
 const powered = computed(() => themeConfig.value.footer?.powered)
