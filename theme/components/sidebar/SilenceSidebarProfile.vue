@@ -1,15 +1,22 @@
 <script lang="ts" setup>
-import { useSiteConfig } from 'valaxy'
+import { useCategories, usePostList, useSiteConfig, useTags } from 'valaxy'
 import { computed } from 'vue'
 import { useThemeConfig } from '../../composables'
 
 const themeConfig = useThemeConfig()
-const avatar = computed(() => themeConfig.value.sidebar.avatar)
-
 const siteConfig = useSiteConfig()
-const author = computed(() => themeConfig.value.sidebar.author ?? siteConfig.value.author.name)
 
+const avatar = computed(() => themeConfig.value.sidebar.avatar ?? siteConfig.value.author.avatar)
+const author = computed(() => themeConfig.value.sidebar.author ?? siteConfig.value.author.name)
 const intro = computed(() => themeConfig.value.sidebar.intro ?? siteConfig.value.author.intro)
+
+const posts = usePostList()
+const categories = useCategories()
+const tags = useTags()
+
+const postCount = computed(() => posts.value.length)
+const categoryCount = computed(() => categories.value.total)
+const tagCount = computed(() => tags.value.size)
 </script>
 
 <template>
@@ -26,10 +33,26 @@ const intro = computed(() => themeConfig.value.sidebar.intro ?? siteConfig.value
     <div class="silence-sidebar-profile-statistic">
       <div class="silence-sidebar-profile-statistic-item">
         <div class="silence-sidebar-profile-statistic-item-number">
-          123
+          {{ postCount }}
         </div>
         <div class="silence-sidebar-profile-statistic-item-title">
           文章
+        </div>
+      </div>
+      <div class="silence-sidebar-profile-statistic-item">
+        <div class="silence-sidebar-profile-statistic-item-number">
+          {{ categoryCount }}
+        </div>
+        <div class="silence-sidebar-profile-statistic-item-title">
+          分类
+        </div>
+      </div>
+      <div class="silence-sidebar-profile-statistic-item">
+        <div class="silence-sidebar-profile-statistic-item-number">
+          {{ tagCount }}
+        </div>
+        <div class="silence-sidebar-profile-statistic-item-title">
+          标签
         </div>
       </div>
     </div>
@@ -61,11 +84,18 @@ const intro = computed(() => themeConfig.value.sidebar.intro ?? siteConfig.value
 
 .silence-sidebar-profile-statistic {
   display: flex;
-  justify-content: center;
   gap: 10px;
+  padding: 8px 0;
+  /* border-top: 1px solid var(--border-color); */
+  /* border-bottom: 1px solid var(--border-color); */
+  justify-content: space-evenly;
 }
 
 .silence-sidebar-profile-statistic-item {
   text-align: center;
+}
+
+.silence-sidebar-profile-statistic-item-number {
+  font-weight: 800;
 }
 </style>

@@ -25,8 +25,6 @@ export const defaultThemeConfig: ThemeConfig = {
   ],
 
   header: {
-    // 头部标题 若未设置 则使用siteConfig.author.name
-    title: '碱式碳酸铜\'s Blog',
     // 头部导航
     navItems: [
       {

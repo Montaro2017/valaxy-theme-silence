@@ -6,7 +6,7 @@ export default defineSiteConfig({
   url: 'https://starter.valaxy.site/',
   author: {
     avatar: 'https://www.yunyoujun.cn/images/avatar.jpg',
-    name: '云游君',
+    name: '碱式碳酸铜',
   },
   description: 'Valaxy Theme Starter Preview.',
   social: [

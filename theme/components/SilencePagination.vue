@@ -72,45 +72,45 @@ const next = computed(() => {
 
 <template>
   <div class="silence-pagination">
-    <silence-button v-if="prev" class="silence-patination-item">
-      <app-link :to="href?.(prev ?? 1) ?? '#'">
+    <app-link v-if="prev" :to="href?.(prev ?? 1) ?? '#'">
+      <silence-button class="silence-patination-item">
         上一页
-      </app-link>
-    </silence-button>
-    <silence-button v-if="leftEllipsis" class="silence-patination-item">
-      <app-link :to="href?.(1) ?? '#'">
+      </silence-button>
+    </app-link>
+    <app-link v-if="leftEllipsis" :to="href?.(1) ?? '#'">
+      <silence-button class="silence-patination-item">
         1
-      </app-link>
-    </silence-button>
+      </silence-button>
+    </app-link>
     <div v-if="leftEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
-    <silence-button v-for="n in displayLeftButtons" :key="n" class="silence-patination-item">
-      <app-link :to="href?.(n) ?? '#'">
+    <app-link v-for="n in displayLeftButtons" :key="n" :to="href?.(n) ?? '#'">
+      <silence-button class="silence-patination-item">
         {{ n }}
-      </app-link>
-    </silence-button>
+      </silence-button>
+    </app-link>
     <silence-button class="silence-patination-item active">
       {{ pageNum }}
     </silence-button>
-    <silence-button v-for="n in displayRightButtons" :key="n" class="silence-patination-item">
-      <app-link :to="href?.(n) ?? '#'">
+    <app-link v-for="n in displayRightButtons" :key="n" :to="href?.(n) ?? '#'">
+      <silence-button class="silence-patination-item">
         {{ n }}
-      </app-link>
-    </silence-button>
+      </silence-button>
+    </app-link>
     <div v-if="rightEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
-    <silence-button v-if="rightEllipsis" class="silence-patination-item">
-      <app-link :to="href?.(maxPageNum) ?? '#'">
+    <app-link v-if="rightEllipsis" :to="href?.(maxPageNum) ?? '#'">
+      <silence-button class="silence-patination-item">
         {{ maxPageNum }}
-      </app-link>
-    </silence-button>
-    <silence-button v-if="next" class="silence-patination-item">
-      <app-link :to="href?.(next ?? maxPageNum) ?? '#'">
+      </silence-button>
+    </app-link>
+    <app-link v-if="next" :to="href?.(next ?? maxPageNum) ?? '#'">
+      <silence-button class="silence-patination-item">
         下一页
-      </app-link>
-    </silence-button>
+      </silence-button>
+    </app-link>
   </div>
 </template>
 
@@ -126,5 +126,6 @@ const next = computed(() => {
 
 .silence-patination-item.active {
   border: none;
+  color: var(--text-color) !important;
 }
 </style>

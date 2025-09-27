@@ -9,7 +9,20 @@ export default defineConfig<ThemeConfig>({
   theme: 'starter',
 
   themeConfig: {
+    colors: [
+      '#ff5722',
+      '#0078E7',
+      '#fa7298',
+      '#42b983',
+      '#607d8b',
+      '#5e72e4',
+      '#ff9700',
+      '#009688',
+      '#673bb7',
+      '#906f61',
+    ],
     header: {
+      title: '碱式碳酸铜\'s Blog',
       navItems: [
         {
           title: '首页',
