@@ -31,6 +31,7 @@ defineProps<{
 <style scoped>
 .silence-post-card {
   margin-bottom: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border-color);
 }
 
