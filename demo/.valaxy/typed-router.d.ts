@@ -24,6 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/archives/': RouteRecordInfo<'/archives/', '/archives', Record<never, never>, Record<never, never>>,
     '/categories': RouteRecordInfo<'/categories', '/categories', Record<never, never>, Record<never, never>, '/categories/'>,
     '/categories/': RouteRecordInfo<'/categories/', '/categories', Record<never, never>, Record<never, never>>,
+    '/category/[category]': RouteRecordInfo<'/category/[category]', '/category/:category', { category: ParamValue<true> }, { category: ParamValue<false> }>,
     '/notes/': RouteRecordInfo<'/notes/', '/notes', Record<never, never>, Record<never, never>>,
     '/posts/draft': RouteRecordInfo<'/posts/draft', '/posts/draft', Record<never, never>, Record<never, never>>,
     '/posts/hello-valaxy': RouteRecordInfo<'/posts/hello-valaxy', '/posts/hello-valaxy', Record<never, never>, Record<never, never>>,
@@ -71,6 +72,10 @@ declare module 'vue-router/auto-routes' {
     }
     'pages/categories/index.md': {
       routes: '/categories/'
+      views: never
+    }
+    '../theme/pages/category/[category].vue': {
+      routes: '/category/[category]'
       views: never
     }
     'pages/notes/index.md': {

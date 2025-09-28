@@ -22,6 +22,10 @@ export interface ThemeConfig extends DefaultTheme.Config {
     intro?: string
     tagLimit?: number
     categoryLimit?: number
+    friends?: {
+      title: string
+      url: string
+    }[]
   }
   /**
    * footer

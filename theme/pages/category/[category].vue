@@ -12,24 +12,24 @@ const pageSize = computed(() => siteConfig.value.pageSize)
 
 const route = useRoute()
 
-const tag = getFirstParam(route, 'tag')
+const category = getFirstParam(route, 'category')
 const routePage = getFirstQuery(route, 'page')
 const pageNum = computed(() => Number(routePage.value ?? 1))
 
-const title = computed(() => `当前标签: ${tag.value}`)
+const title = computed(() => `当前分类: ${category.value}`)
 
 const allPosts = usePostList()
 const pagination = useThemePagination(
   allPosts,
   pageNum,
   pageSize,
-  p => p.tags?.includes(tag.value!) ?? false,
+  p => p.categories?.includes(category.value!) ?? false,
 )
 const total = computed(() => pagination.value.total)
 const posts = computed(() => pagination.value.list)
 
 function pageHref(n: number) {
-  return `/tag/${tag.value}?page=${n}`
+  return `/category/${category.value}?page=${n}`
 }
 </script>
 

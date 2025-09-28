@@ -14,6 +14,9 @@ importers:
       '@unocss/eslint-plugin':
         specifier: ^66.5.1
         version: 66.5.1(eslint@9.36.0(jiti@2.6.0))(typescript@5.9.2)
+      '@vicons/material':
+        specifier: ^0.13.0
+        version: 0.13.0
       bumpp:
         specifier: ^10.2.3
         version: 10.2.3
@@ -1294,6 +1297,9 @@ packages:
 
   '@valaxyjs/utils@0.26.6':
     resolution: {integrity: sha512-thzqBtKDDJ/2evAcMpP2BwK+i7m5VgP3nrH61KsbQ3MEkNFgkv9gnBRrSexYKX+e0Km0BGz0mbzb+uPoIqeeXA==}
+
+  '@vicons/material@0.13.0':
+    resolution: {integrity: sha512-lKVxFNprM+CaBkUH3gt6VjIeiMsKQl2zARQMwTCZruQl2vRHzyeZiKeCflWS99CEfv2JzX/6y697smxlzyxcVw==}
 
   '@vitejs/plugin-vue@6.0.1':
     resolution: {integrity: sha512-+MaE752hU0wfPFJEUAIxqw18+20euHHdxVtMvbFcOEpjEyfqXH/5DCoTHiVJ0J29EhTJdoTkjEv5YBKU9dnoTw==}
@@ -5772,6 +5778,8 @@ snapshots:
       - vite
 
   '@valaxyjs/utils@0.26.6': {}
+
+  '@vicons/material@0.13.0': {}
 
   '@vitejs/plugin-vue@6.0.1(vite@7.1.7(@types/node@24.5.2)(jiti@2.6.0)(sass@1.93.0)(terser@5.44.0)(yaml@2.8.1))(vue@3.5.21(typescript@5.9.2))':
     dependencies:

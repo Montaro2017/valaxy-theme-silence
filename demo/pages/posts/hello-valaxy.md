@@ -2,11 +2,13 @@
 title: Hello, Valaxy!
 date: 2022-03-22
 updated: 2022-03-23
-categories: Valaxy Notes
+categories:
+  - AAA
 top: true
 tags:
   - valaxy
   - 笔记
+  - 测试
 ---
 
 ## Hello, Valaxy!

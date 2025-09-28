@@ -23,7 +23,6 @@ const tags = useTags()
 .silence-tag-list {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 16px;
 }
 
 .silence-tag-list-item {

@@ -7,14 +7,14 @@ const count = computed(() => props.tag[1].count)
 </script>
 
 <template>
-  <a class="silence-tag-item" href="#">
+  <app-link class="silence-tag-item" :href="`/tag/${name}`">
     <span class="silence-tag-item-name">
       {{ name }}
     </span>
     <span class="silence-tag-item-count">
       {{ count }}
     </span>
-  </a>
+  </app-link>
 </template>
 
 <style scoped>

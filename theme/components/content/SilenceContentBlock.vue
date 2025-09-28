@@ -20,4 +20,8 @@ const props = defineProps<{ title: string }>()
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border-color);
 }
+
+.silence-content-block-content {
+  margin-top: 16px;
+}
 </style>

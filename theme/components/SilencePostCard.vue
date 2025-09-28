@@ -1,16 +1,23 @@
 <script lang="ts" setup>
 import type { Post } from 'valaxy'
+import { computed } from 'vue'
 
-defineProps<{
+const props = withDefaults(defineProps<{
   post: Post
-}>()
+  pinMark?: boolean
+}>(), {
+  pinMark: true,
+})
+
+const post = computed(() => props.post)
+const pinMark = computed(() => props.pinMark)
 </script>
 
 <template>
   <div class="silence-post-card">
     <h2 class="silence-post-card-title" :title="post.title as string">
       <app-link :to="post.path || ''" class="block">
-        <span v-if="post.top" class="color-[var(--theme-color)] font-300">[置顶]</span>
+        <span v-if="pinMark && post.top" class="color-[var(--theme-color)] font-300">[置顶]</span>
         {{ post.title }}
       </app-link>
     </h2>
@@ -91,6 +98,9 @@ defineProps<{
 }
 
 .silence-post-card-read-more a {
+  font-size: 14px;
+  font-weight: 300;
+  padding: 2px 5px;
   border-bottom: 1px dotted var(--text-color);
 }
 

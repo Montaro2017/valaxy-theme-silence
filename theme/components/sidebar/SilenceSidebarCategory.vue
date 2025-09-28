@@ -3,16 +3,14 @@ import { useCategories } from 'valaxy'
 import { computed } from 'vue'
 import { useThemeConfig } from '../../composables'
 
-const categories = computed(() => {
-  return useCategories().value.children
-})
+const categories = computed(() => useCategories().value.children)
 
 const themeConfig = useThemeConfig()
 const categoryLimit = computed(() => themeConfig.value.sidebar.categoryLimit ?? 0)
 
 const categoriesToShow = computed(() => {
   if (categoryLimit.value > 0) {
-    return new Map(Array.from(categories.value).slice(0, categoryLimit.value))
+    return new Map(Array.from(categories.value).filter(([name, _]) => name !== 'Uncategorized').slice(0, categoryLimit.value))
   }
   return categories.value
 })
