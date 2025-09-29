@@ -14,9 +14,6 @@ importers:
       '@unocss/eslint-plugin':
         specifier: ^66.5.1
         version: 66.5.1(eslint@9.36.0(jiti@2.6.0))(typescript@5.9.2)
-      '@vicons/material':
-        specifier: ^0.13.0
-        version: 0.13.0
       bumpp:
         specifier: ^10.2.3
         version: 10.2.3
@@ -57,6 +54,12 @@ importers:
         specifier: ^1.2.52
         version: 1.2.52
     devDependencies:
+      '@iconify-json/material-symbols':
+        specifier: ^1.2.39
+        version: 1.2.39
+      '@iconify-json/material-symbols-light':
+        specifier: ^1.2.39
+        version: 1.2.39
       valaxy:
         specifier: ^0.26.6
         version: 0.26.6(@babel/parser@7.28.4)(@types/markdown-it@14.1.2)(@types/node@24.5.2)(@vue/compiler-dom@3.5.21)(@vue/compiler-sfc@3.5.21)(axios@1.12.2)(change-case@5.4.4)(eslint@9.36.0(jiti@2.6.0))(postcss@8.5.6)(prettier@3.6.2)(rollup@4.52.0)(terser@5.44.0)(typescript@5.9.2)(yaml@2.8.1)
@@ -591,6 +594,12 @@ packages:
 
   '@iconify-json/logos@1.2.9':
     resolution: {integrity: sha512-G6VCdFnwZcrT6Eveq3m43oJfLw/CX8plwFcE+2jgv3fiGB64pTmnU7Yd1MNZ/eA+/Re2iEDhuCfSNOWTHwwK8w==}
+
+  '@iconify-json/material-symbols-light@1.2.39':
+    resolution: {integrity: sha512-RJblIdw+MfLL6JKmg/AntDNiCbGakO8wtU1xKUkPZusAIap6eOdYQsvyTfVC9uScBAXISo+as2iqCIMUxhwS8g==}
+
+  '@iconify-json/material-symbols@1.2.39':
+    resolution: {integrity: sha512-spjiB1I5jPi6hV5b/QyC4zO8GRYGCbb6/DaHm754NJFqNli6bsYDpN4HYVl67XhU49rYljvJyNc/6lYEf+jokA==}
 
   '@iconify-json/ri@1.2.5':
     resolution: {integrity: sha512-kWGimOXMZrlYusjBKKXYOWcKhbOHusFsmrmRGmjS7rH0BpML5A9/fy8KHZqFOwZfC4M6amObQYbh8BqO5cMC3w==}
@@ -1297,9 +1306,6 @@ packages:
 
   '@valaxyjs/utils@0.26.6':
     resolution: {integrity: sha512-thzqBtKDDJ/2evAcMpP2BwK+i7m5VgP3nrH61KsbQ3MEkNFgkv9gnBRrSexYKX+e0Km0BGz0mbzb+uPoIqeeXA==}
-
-  '@vicons/material@0.13.0':
-    resolution: {integrity: sha512-lKVxFNprM+CaBkUH3gt6VjIeiMsKQl2zARQMwTCZruQl2vRHzyeZiKeCflWS99CEfv2JzX/6y697smxlzyxcVw==}
 
   '@vitejs/plugin-vue@6.0.1':
     resolution: {integrity: sha512-+MaE752hU0wfPFJEUAIxqw18+20euHHdxVtMvbFcOEpjEyfqXH/5DCoTHiVJ0J29EhTJdoTkjEv5YBKU9dnoTw==}
@@ -4959,6 +4965,14 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/material-symbols-light@1.2.39':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/material-symbols@1.2.39':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify-json/ri@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
@@ -5778,8 +5792,6 @@ snapshots:
       - vite
 
   '@valaxyjs/utils@0.26.6': {}
-
-  '@vicons/material@0.13.0': {}
 
   '@vitejs/plugin-vue@6.0.1(vite@7.1.7(@types/node@24.5.2)(jiti@2.6.0)(sass@1.93.0)(terser@5.44.0)(yaml@2.8.1))(vue@3.5.21(typescript@5.9.2))':
     dependencies:

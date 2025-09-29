@@ -1,4 +1,4 @@
-body {
+#app {
   background: var(--blog-bg-color);
   color: var(--text-color);
   font-family:

@@ -1,17 +1,28 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+
+const props = defineProps<{
+  icon?: string
+}>()
+
+const iconClass = computed(() => {
+  if (!props.icon) {
+    return null
+  }
+  return `i-${props.icon.replace(':', '-')}`
+})
+</script>
+
 <template>
   <div class="silence-icon">
-    <slot />
+    <slot>
+      <div :class="iconClass" />
+    </slot>
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-icon {
-  height: 24px;
-  width: 24px;
   color: var(--text-color);
-}
-
-.silence-icon > :deep(svg) {
-  max-height: 100%;
 }
 </style>

@@ -26,6 +26,8 @@
     "@iconify-json/simple-icons": "^1.2.52"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols": "^1.2.39",
+    "@iconify-json/material-symbols-light": "^1.2.39",
     "valaxy": "^0.26.6"
   }
 }

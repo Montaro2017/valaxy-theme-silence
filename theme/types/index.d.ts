@@ -11,6 +11,8 @@ export namespace StarterTheme {
 export interface ThemeConfig extends DefaultTheme.Config {
   colors: string[]
 
+  postLayout?: string | string[]
+
   header?: Partial<{
     title: string
     navItems: NavItemWithChildren[]

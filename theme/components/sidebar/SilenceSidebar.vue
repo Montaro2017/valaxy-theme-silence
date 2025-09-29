@@ -1,7 +1,16 @@
+<script lang="ts" setup>
+import { useSiteConfig } from 'valaxy'
+import { computed } from 'vue'
+
+const siteConfig = useSiteConfig()
+
+const search = computed(() => siteConfig.value.search)
+</script>
+
 <template>
   <div class="silence-sidebar">
     <silence-sidebar-profile />
-    <silence-sidebar-search />
+    <silence-sidebar-search v-if="search.enable" />
     <silence-sidebar-tag />
     <silence-sidebar-category />
     <silence-sidebar-archive />

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { CategoryList } from 'valaxy'
-import ArrowRightOutlined from '@vicons/material/ArrowRightOutlined'
 import { isCategoryList } from 'valaxy'
 import { computed, ref } from 'vue'
 
@@ -33,7 +32,8 @@ function categoryHref(category: CategoryList) {
     <div class="silence-category-item-inner" :class="{ 'has-parent': props.hasParent }" @click="expand = !expand">
       <div class="silence-category-item-inner-left">
         <silence-icon class="silence-category-item-inner-icon" :class="{ expand }">
-          <ArrowRightOutlined v-if="hasChildren" />
+          <div v-if="hasChildren" class="i-material-symbols-arrow-right text-2xl" />
+          <!-- <ArrowRightOutlined v-if="hasChildren" /> -->
         </silence-icon>
         <app-link :to="categoryHref(category)" @click.stop>
           {{ category.name }}

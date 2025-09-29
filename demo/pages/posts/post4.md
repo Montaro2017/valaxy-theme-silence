@@ -1,6 +1,5 @@
 ---
 title: post4
-draft: true
 date: 2022-04-04
 categories:
   - AAA

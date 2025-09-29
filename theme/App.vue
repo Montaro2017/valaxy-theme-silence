@@ -1,0 +1,3 @@
+<template>
+  <silence-toolbar />
+</template>

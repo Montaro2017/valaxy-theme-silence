@@ -16,12 +16,7 @@ const hasChildren = computed(() => ((item.value as NavItemWithChildren).children
       {{ item.title }}
     </app-link>
     <template v-if="hasChildren">
-      <svg
-        class="arrow" width="9px" height="9px" viewBox="0 0 13 7" xml:space="preserve" fill="none"
-        stroke="var(--text-color)"
-      >
-        <path d="M1,1l6.2,6L13,1" />
-      </svg>
+      <silence-icon icon="material-symbols-light:keyboard-arrow-down" />
       <div class="silence-header-nav-item-subnav">
         <div class="silence-header-nav-item-subnav-caret" />
         <div class="silence-header-nav-item-subnav-content">
@@ -50,11 +45,11 @@ const hasChildren = computed(() => ((item.value as NavItemWithChildren).children
   font-weight: 300;
 }
 
-.silence-header-nav-item svg {
+.silence-header-nav-item > .silence-icon {
   transition: transform 0.2s ease-in-out;
 }
 
-.silence-header-nav-item:hover svg {
+.silence-header-nav-item:hover > .silence-icon {
   transform: rotate(180deg);
 }
 
@@ -63,6 +58,7 @@ const hasChildren = computed(() => ((item.value as NavItemWithChildren).children
   transform: scaleY(0);
   position: absolute;
   top: 0;
+  z-index: 900;
   width: 160px;
   padding-top: 8px;
   left: calc(50% - 80px);

@@ -35,8 +35,10 @@ declare module 'vue-router/auto-routes' {
     '/posts/post3': RouteRecordInfo<'/posts/post3', '/posts/post3', Record<never, never>, Record<never, never>>,
     '/posts/post4': RouteRecordInfo<'/posts/post4', '/posts/post4', Record<never, never>, Record<never, never>>,
     '/posts/test': RouteRecordInfo<'/posts/test', '/posts/test', Record<never, never>, Record<never, never>>,
+    '/search': RouteRecordInfo<'/search', '/search', Record<never, never>, Record<never, never>>,
     '/tag/[tag]': RouteRecordInfo<'/tag/[tag]', '/tag/:tag', { tag: ParamValue<true> }, { tag: ParamValue<false> }>,
     '/tags': RouteRecordInfo<'/tags', '/tags', Record<never, never>, Record<never, never>>,
+    '/test': RouteRecordInfo<'/test', '/test', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -118,12 +120,20 @@ declare module 'vue-router/auto-routes' {
       routes: '/posts/test'
       views: never
     }
+    '../theme/pages/search.vue': {
+      routes: '/search'
+      views: never
+    }
     '../theme/pages/tag/[tag].vue': {
       routes: '/tag/[tag]'
       views: never
     }
     '../theme/pages/tags.vue': {
       routes: '/tags'
+      views: never
+    }
+    'pages/test.md': {
+      routes: '/test'
       views: never
     }
   }

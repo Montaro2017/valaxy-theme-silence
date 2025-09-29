@@ -23,6 +23,7 @@ export const defaultThemeConfig: ThemeConfig = {
     '#673bb7',
     '#906f61',
   ],
+  postLayout: 'post',
 
   header: {
     // 头部导航
