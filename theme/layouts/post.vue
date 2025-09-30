@@ -1,5 +1,15 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const frontmatter = computed(() => route.meta.frontmatter)
+
+const sidebar = computed(() => frontmatter.value.sidebar ?? false)
+</script>
+
 <template>
-  <silence-layout>
+  <silence-layout :sidebar="sidebar">
     <router-view />
   </silence-layout>
 </template>

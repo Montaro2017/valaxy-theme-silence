@@ -1,8 +1,4 @@
 <script lang="ts" setup>
-import { useAppStore } from 'valaxy'
-import { computed, watch } from 'vue'
-import { useThemeConfig } from '../composables'
-
 const props = withDefaults(defineProps<{
   header?: boolean
   sidebar?: boolean
@@ -11,30 +7,6 @@ const props = withDefaults(defineProps<{
   header: true,
   sidebar: false,
   footer: true,
-})
-
-const appStore = useAppStore()
-
-const mode = computed(() => {
-  return appStore.isDark ? 'dark' : 'light'
-})
-
-const themeConfig = useThemeConfig()
-
-const colors = computed(() => {
-  return themeConfig.value.colors
-})
-
-const color = computed(() => {
-  return colors.value[0]
-})
-
-watch(() => [mode.value, color.value], (_) => {
-  const app = document.querySelector('#app')
-  app?.setAttribute('color', color.value)
-  app?.setAttribute('mode', mode.value)
-}, {
-  immediate: true,
 })
 </script>
 

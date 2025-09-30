@@ -2,8 +2,9 @@
 import { usePostList, useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useThemePagination } from '..//utils/pagination'
+import { useThemePagination } from '../utils/pagination'
 import { getFirstQuery } from '../utils/route'
+import { scrollToTop } from '../utils/theme'
 
 defineOptions({
   name: 'Index',
@@ -28,7 +29,7 @@ function pageHref(n: number) {
 
 <template>
   <silence-post-list :posts="posts" />
-  <silence-pagination :total="total" :page-size="pageSize" :page-num="pageNum" :href="pageHref" />
+  <silence-pagination :total="total" :page-size="pageSize" :page-num="pageNum" :href="pageHref" @after="scrollToTop" />
 </template>
 
 <route lang="yaml">

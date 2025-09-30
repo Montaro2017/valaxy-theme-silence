@@ -10,11 +10,15 @@ const props = withDefaults(defineProps<{
   pageNum: 1,
 })
 
+const emit = defineEmits(['after'])
+
+// 最多显示按钮数量 包含'...'和首页尾页页码 1...3 4 5...9
 const maxButtonCount = 7
 
 const maxPageNum = computed(() => Math.ceil(props.total / props.pageSize))
 const pageNum = computed(() => Math.min(Math.max(props.pageNum, 1), maxPageNum.value))
 
+// 除去首页和尾页的页码按钮，中间的所有按钮，包含当前页
 const buttons = computed(() => {
   const left = Array.from({ length: maxButtonCount - 1 })
     .map((_, i) => pageNum.value - maxButtonCount + 1 + i)
@@ -31,14 +35,17 @@ const buttons = computed(() => {
   return buttons.slice(offset, offset + maxButtonCount)
 })
 
+// 当前页左侧的所有按钮
 const leftButtons = computed(() => {
   return buttons.value.filter((n: number) => n < pageNum.value)
 })
 
+// 是否显示左侧省略号
 const leftEllipsis = computed(() => {
   return leftButtons.value.length > 0 && !leftButtons.value.includes(1)
 })
 
+// 当前页左侧显示的按钮，如果显示左侧省略号 则需要去除2个按钮用于显示首页和省略号
 const displayLeftButtons = computed(() => {
   if (!leftEllipsis.value) {
     return leftButtons.value
@@ -46,14 +53,17 @@ const displayLeftButtons = computed(() => {
   return leftButtons.value.slice(2)
 })
 
+// 当前页右侧的所有按钮
 const rightButtons = computed(() => {
   return buttons.value.filter((n: number) => n > pageNum.value)
 })
 
+// 是否显示右侧省略号
 const rightEllipsis = computed(() => {
   return rightButtons.value.length > 0 && !rightButtons.value.includes(maxPageNum.value)
 })
 
+// 当前页右侧显示的按钮，如果显示右侧省略号 则需要去除2个按钮用于显示省略号和尾页
 const displayRightButtons = computed(() => {
   if (!rightEllipsis.value) {
     return rightButtons.value
@@ -68,16 +78,20 @@ const prev = computed(() => {
 const next = computed(() => {
   return pageNum.value >= maxPageNum.value ? null : pageNum.value + 1
 })
+
+function emitAfter() {
+  emit('after')
+}
 </script>
 
 <template>
   <div class="silence-pagination">
-    <app-link v-if="prev" :to="href?.(prev ?? 1) ?? '#'">
+    <app-link v-if="prev" :to="href?.(prev ?? 1) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         上一页
       </silence-button>
     </app-link>
-    <app-link v-if="leftEllipsis" :to="href?.(1) ?? '#'">
+    <app-link v-if="leftEllipsis" :to="href?.(1) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         1
       </silence-button>
@@ -85,7 +99,7 @@ const next = computed(() => {
     <div v-if="leftEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
-    <app-link v-for="n in displayLeftButtons" :key="n" :to="href?.(n) ?? '#'">
+    <app-link v-for="n in displayLeftButtons" :key="n" :to="href?.(n) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         {{ n }}
       </silence-button>
@@ -93,7 +107,7 @@ const next = computed(() => {
     <silence-button class="silence-patination-item active">
       {{ pageNum }}
     </silence-button>
-    <app-link v-for="n in displayRightButtons" :key="n" :to="href?.(n) ?? '#'">
+    <app-link v-for="n in displayRightButtons" :key="n" :to="href?.(n) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         {{ n }}
       </silence-button>
@@ -101,12 +115,12 @@ const next = computed(() => {
     <div v-if="rightEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
-    <app-link v-if="rightEllipsis" :to="href?.(maxPageNum) ?? '#'">
+    <app-link v-if="rightEllipsis" :to="href?.(maxPageNum) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         {{ maxPageNum }}
       </silence-button>
     </app-link>
-    <app-link v-if="next" :to="href?.(next ?? maxPageNum) ?? '#'">
+    <app-link v-if="next" :to="href?.(next ?? maxPageNum) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         下一页
       </silence-button>

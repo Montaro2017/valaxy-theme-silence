@@ -6,9 +6,8 @@ import type { ThemeConfig } from '../types'
  * Default Config
  */
 export const defaultThemeConfig: ThemeConfig = {
-  valaxyDarkOptions: {
-    circleTransition: true,
-  },
+
+  toggleDarkWithCircleTransition: true,
 
   // 可选主题颜色
   colors: [

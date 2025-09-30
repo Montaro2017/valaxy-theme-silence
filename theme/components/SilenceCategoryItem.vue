@@ -31,10 +31,9 @@ function categoryHref(category: CategoryList) {
   <div class="silence-category-item" :class="{ expand }">
     <div class="silence-category-item-inner" :class="{ 'has-parent': props.hasParent }" @click="expand = !expand">
       <div class="silence-category-item-inner-left">
-        <silence-icon class="silence-category-item-inner-icon" :class="{ expand }">
-          <div v-if="hasChildren" class="i-material-symbols-arrow-right text-2xl" />
-          <!-- <ArrowRightOutlined v-if="hasChildren" /> -->
-        </silence-icon>
+        <div class="silence-category-item-inner-icon" :class="{ expand }">
+          <silence-icon v-if="hasChildren" icon="i-material-symbols-light-arrow-right" class="text-2xl" />
+        </div>
         <app-link :to="categoryHref(category)" @click.stop>
           {{ category.name }}
         </app-link>

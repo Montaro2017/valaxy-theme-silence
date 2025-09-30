@@ -16,7 +16,7 @@ const hasChildren = computed(() => ((item.value as NavItemWithChildren).children
       {{ item.title }}
     </app-link>
     <template v-if="hasChildren">
-      <silence-icon icon="material-symbols-light:keyboard-arrow-down" />
+      <silence-icon icon="i-material-symbols-light-keyboard-arrow-down-rounded" />
       <div class="silence-header-nav-item-subnav">
         <div class="silence-header-nav-item-subnav-caret" />
         <div class="silence-header-nav-item-subnav-content">
@@ -47,6 +47,10 @@ const hasChildren = computed(() => ((item.value as NavItemWithChildren).children
 
 .silence-header-nav-item > .silence-icon {
   transition: transform 0.2s ease-in-out;
+}
+
+.silence-header-nav-item:hover {
+  color: var(--theme-color);
 }
 
 .silence-header-nav-item:hover > .silence-icon {

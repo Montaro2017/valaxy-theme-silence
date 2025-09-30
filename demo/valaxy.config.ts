@@ -7,7 +7,6 @@ import { defineConfig } from 'valaxy'
  */
 export default defineConfig<ThemeConfig>({
   theme: 'starter',
-
   themeConfig: {
     colors: [
       '#ff5722',

@@ -1,5 +1,3 @@
-import type { DefaultTheme } from 'valaxy'
-
 export namespace StarterTheme {
   export type Config = ThemeConfig
   export type Sidebar = any
@@ -8,8 +6,10 @@ export namespace StarterTheme {
 /**
  * Theme Config
  */
-export interface ThemeConfig extends DefaultTheme.Config {
+export interface ThemeConfig {
   colors: string[]
+
+  toggleDarkWithCircleTransition?: boolean
 
   postLayout?: string | string[]
 

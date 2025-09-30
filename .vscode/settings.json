@@ -1,10 +1,12 @@
 {
   "cSpell.words": [
     "algoliasearch",
+    "beian",
     "instantsearch",
+    "pinia",
     "valaxy",
     "valaxyjs",
-    "beian"
+    "vueuse"
   ],
   "i18n-ally.sourceLanguage": "en",
   "i18n-ally.keystyle": "nested",
