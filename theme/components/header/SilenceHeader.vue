@@ -26,7 +26,7 @@ const navItems = computed(() => themeConfig.value.header?.navItems ?? [])
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-header {
   height: 60px;
   display: flex;

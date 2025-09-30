@@ -1,5 +1,7 @@
+import type { CategoryList } from 'valaxy'
 import type { ComputedRef } from 'vue'
 import type { LocationQueryValue, RouteLocationNormalizedLoaded } from 'vue-router'
+import { isCategoryList } from 'valaxy'
 import { computed } from 'vue'
 
 export function getFirstQuery(route: RouteLocationNormalizedLoaded, key: string): ComputedRef<LocationQueryValue> {
@@ -26,4 +28,19 @@ export function getFirstParam(route: RouteLocationNormalizedLoaded, key: string)
     }
     return param
   })
+}
+
+export function getIndexLink(page?: number) {
+  return `/${page ? `?page=${page}` : ''}`
+}
+
+export function getTagLink(tag: string, page?: number) {
+  return `/tag/${tag}${page ? `?page=${page}` : ''}`
+}
+
+export function getCategoryLink(category: string | CategoryList, page?: number) {
+  if (isCategoryList(category)) {
+    return `/category/${category.name}${page ? `?page=${page}` : ''}`
+  }
+  return `/category/${category}${page ? `?page=${page}` : ''}`
 }

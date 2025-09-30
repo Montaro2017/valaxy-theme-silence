@@ -3,6 +3,8 @@ import type { CategoryList } from 'valaxy'
 import { isCategoryList } from 'valaxy'
 import { computed, ref } from 'vue'
 
+import { getCategoryLink } from '../utils/route'
+
 const props = withDefaults(defineProps<{
   category: CategoryList
   defaultExpand?: boolean
@@ -21,10 +23,6 @@ const children = computed(() => {
 const hasChildren = computed(() => children.value.length > 0)
 
 const expand = ref(props.defaultExpand ?? false)
-
-function categoryHref(category: CategoryList) {
-  return `/category/${category.name}`
-}
 </script>
 
 <template>
@@ -34,7 +32,7 @@ function categoryHref(category: CategoryList) {
         <div class="silence-category-item-inner-icon" :class="{ expand }">
           <silence-icon v-if="hasChildren" icon="i-material-symbols-light-arrow-right" class="text-2xl" />
         </div>
-        <app-link :to="categoryHref(category)" @click.stop>
+        <app-link :to="getCategoryLink(category)" @click.stop>
           {{ category.name }}
         </app-link>
       </div>
@@ -52,7 +50,7 @@ function categoryHref(category: CategoryList) {
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-category-item {
   cursor: pointer;
 }

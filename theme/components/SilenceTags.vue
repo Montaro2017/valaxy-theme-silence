@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useTags } from 'valaxy'
+import { getTagLink } from '../utils/route'
 
 const tags = useTags()
 </script>
@@ -7,7 +8,7 @@ const tags = useTags()
 <template>
   <silence-content-block title="所有标签">
     <div class="silence-tag-list">
-      <app-link v-for="[name, { count }] in tags" :key="name" :to="`/tag/${name}`" class="silence-tag-list-item">
+      <app-link v-for="[name, { count }] in tags" :key="name" :to="getTagLink(name)" class="silence-tag-list-item">
         <div class="silence-tag-list-item-name">
           {{ name }}
         </div>
@@ -19,7 +20,7 @@ const tags = useTags()
   </silence-content-block>
 </template>
 
-<style scoped>
+<style>
 .silence-tag-list {
   display: flex;
   flex-wrap: wrap;

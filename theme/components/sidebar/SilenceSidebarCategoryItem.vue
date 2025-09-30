@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { CategoryList, Post } from 'valaxy'
 import { computed } from 'vue'
+import { getCategoryLink } from '../../utils/route'
 
 const props = defineProps<{
   category: [string, Post | CategoryList]
@@ -12,7 +13,7 @@ const total = computed(() => props.category[1].total)
 </script>
 
 <template>
-  <app-link class="silence-sidebar-category-item">
+  <app-link class="silence-sidebar-category-item" :to="getCategoryLink(name)">
     <div class="silence-sidebar-category-item-name">
       {{ name }}
     </div>
@@ -22,12 +23,16 @@ const total = computed(() => props.category[1].total)
   </app-link>
 </template>
 
-<style scoped>
+<style>
 .silence-sidebar-category-item {
   display: flex;
   align-items: center;
   padding: 5px 0;
   font-size: 15px;
   font-weight: 300;
+}
+
+.silence-sidebar-category-item > * {
+  color: inherit !important;
 }
 </style>

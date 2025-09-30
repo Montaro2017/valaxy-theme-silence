@@ -34,7 +34,7 @@ const hasChildren = computed(() => ((item.value as NavItemWithChildren).children
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-header-nav-item {
   display: flex;
   gap: 4px;

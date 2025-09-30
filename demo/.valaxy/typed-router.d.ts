@@ -24,7 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/archives/': RouteRecordInfo<'/archives/', '/archives', Record<never, never>, Record<never, never>>,
     '/categories': RouteRecordInfo<'/categories', '/categories', Record<never, never>, Record<never, never>, '/categories/'>,
     '/categories/': RouteRecordInfo<'/categories/', '/categories', Record<never, never>, Record<never, never>>,
-    '/category/[category]': RouteRecordInfo<'/category/[category]', '/category/:category', { category: ParamValue<true> }, { category: ParamValue<false> }>,
+    '/category.[category]': RouteRecordInfo<'/category.[category]', '/category/:category', { category: ParamValue<true> }, { category: ParamValue<false> }>,
     '/notes/': RouteRecordInfo<'/notes/', '/notes', Record<never, never>, Record<never, never>>,
     '/posts/draft': RouteRecordInfo<'/posts/draft', '/posts/draft', Record<never, never>, Record<never, never>>,
     '/posts/hello-valaxy': RouteRecordInfo<'/posts/hello-valaxy', '/posts/hello-valaxy', Record<never, never>, Record<never, never>>,
@@ -36,7 +36,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/post4': RouteRecordInfo<'/posts/post4', '/posts/post4', Record<never, never>, Record<never, never>>,
     '/posts/test': RouteRecordInfo<'/posts/test', '/posts/test', Record<never, never>, Record<never, never>>,
     '/search': RouteRecordInfo<'/search', '/search', Record<never, never>, Record<never, never>>,
-    '/tag/[tag]': RouteRecordInfo<'/tag/[tag]', '/tag/:tag', { tag: ParamValue<true> }, { tag: ParamValue<false> }>,
+    '/tag.[tag]': RouteRecordInfo<'/tag.[tag]', '/tag/:tag', { tag: ParamValue<true> }, { tag: ParamValue<false> }>,
     '/tags': RouteRecordInfo<'/tags', '/tags', Record<never, never>, Record<never, never>>,
     '/test': RouteRecordInfo<'/test', '/test', Record<never, never>, Record<never, never>>,
   }
@@ -76,8 +76,8 @@ declare module 'vue-router/auto-routes' {
       routes: '/categories/'
       views: never
     }
-    '../theme/pages/category/[category].vue': {
-      routes: '/category/[category]'
+    '../theme/pages/category.[category].vue': {
+      routes: '/category.[category]'
       views: never
     }
     'pages/notes/index.md': {
@@ -124,8 +124,8 @@ declare module 'vue-router/auto-routes' {
       routes: '/search'
       views: never
     }
-    '../theme/pages/tag/[tag].vue': {
-      routes: '/tag/[tag]'
+    '../theme/pages/tag.[tag].vue': {
+      routes: '/tag.[tag]'
       views: never
     }
     '../theme/pages/tags.vue': {

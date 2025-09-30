@@ -32,7 +32,7 @@ const powered = computed(() => themeConfig.value.footer?.powered)
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-footer {
   padding: 15px 0;
   font-size: 13px;

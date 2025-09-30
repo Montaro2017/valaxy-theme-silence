@@ -13,7 +13,7 @@ const props = defineProps<{ title: string }>()
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-content-block-title {
   font-size: 18px;
   font-weight: 700;

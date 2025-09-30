@@ -59,7 +59,7 @@ const tagCount = computed(() => tags.value.size)
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-sidebar-profile-avatar {
   width: 100%;
   overflow: hidden;

@@ -4,7 +4,7 @@
   </button>
 </template>
 
-<style scoped>
+<style>
 .silence-button {
   border-radius: 4px;
   padding: 0 10px;
@@ -13,7 +13,7 @@
   border: 1px solid var(--border-color);
 }
 
-button:hover {
+button.silence-button:hover {
   color: var(--theme-color) !important;
   border-color: var(--theme-color);
 }

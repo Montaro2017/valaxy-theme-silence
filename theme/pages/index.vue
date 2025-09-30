@@ -3,7 +3,7 @@ import { usePostList, useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useThemePagination } from '../utils/pagination'
-import { getFirstQuery } from '../utils/route'
+import { getFirstQuery, getIndexLink } from '../utils/route'
 import { scrollToTop } from '../utils/theme'
 
 defineOptions({
@@ -21,15 +21,11 @@ const allPosts = usePostList()
 const pagination = useThemePagination(allPosts, pageNum, pageSize)
 const total = computed(() => pagination.value.total)
 const posts = computed(() => pagination.value.list)
-
-function pageHref(n: number) {
-  return `/?page=${n}`
-}
 </script>
 
 <template>
   <silence-post-list :posts="posts" />
-  <silence-pagination :total="total" :page-size="pageSize" :page-num="pageNum" :href="pageHref" @after="scrollToTop" />
+  <silence-pagination :total="total" :page-size="pageSize" :page-num="pageNum" :link="getIndexLink" @after="scrollToTop" />
 </template>
 
 <route lang="yaml">

@@ -7,7 +7,7 @@
   </silence-sidebar-block>
 </template>
 
-<style scoped>
+<style>
 .silence-sidebar-search {
   gap: 4px;
   display: flex;

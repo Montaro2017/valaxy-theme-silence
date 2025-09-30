@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
+import { useLayout } from 'valaxy'
 import { computed, ref, useTemplateRef, watch } from 'vue'
-import { useRoute } from 'vue-router'
 import { useThemeConfig } from '../composables'
 import { useSilenceAppStore } from '../store/app'
 import { scrollToTop } from '../utils/theme'
@@ -16,11 +16,10 @@ const postLayouts = computed(() => {
   return layout
 })
 
-const route = useRoute()
-
+const layout = useLayout()
 const showMore = ref(false)
 const tocBtn = computed(() => {
-  return postLayouts.value.includes(route.meta.layout as string)
+  return postLayouts.value.includes(layout.value as string)
 })
 
 const silenceToolbar = useTemplateRef('silenceToolbar')
@@ -92,7 +91,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-toolbar {
   position: fixed;
   right: 30px;

@@ -13,7 +13,7 @@ const props = defineProps<{
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-sidebar-block-title {
   margin: 20px 0;
   font-size: 20px;

@@ -17,7 +17,7 @@ const count = computed(() => props.tag[1].count)
   </app-link>
 </template>
 
-<style scoped>
+<style>
 .silence-tag-item {
   font-size: 14px;
   white-space: nowrap;

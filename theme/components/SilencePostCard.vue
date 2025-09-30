@@ -35,7 +35,7 @@ const pinMark = computed(() => props.pinMark)
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-post-card {
   margin-bottom: 10px;
   padding-bottom: 10px;

@@ -5,7 +5,7 @@ const props = withDefaults(defineProps<{
   total: number
   pageSize: number
   pageNum?: number
-  href?: (page: number) => string
+  link?: (page: number) => string
 }>(), {
   pageNum: 1,
 })
@@ -86,12 +86,12 @@ function emitAfter() {
 
 <template>
   <div class="silence-pagination">
-    <app-link v-if="prev" :to="href?.(prev ?? 1) ?? '#'" @click="emitAfter">
+    <app-link v-if="prev" :to="link?.(prev ?? 1) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         上一页
       </silence-button>
     </app-link>
-    <app-link v-if="leftEllipsis" :to="href?.(1) ?? '#'" @click="emitAfter">
+    <app-link v-if="leftEllipsis" :to="link?.(1) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         1
       </silence-button>
@@ -99,7 +99,7 @@ function emitAfter() {
     <div v-if="leftEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
-    <app-link v-for="n in displayLeftButtons" :key="n" :to="href?.(n) ?? '#'" @click="emitAfter">
+    <app-link v-for="n in displayLeftButtons" :key="n" :to="link?.(n) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         {{ n }}
       </silence-button>
@@ -107,7 +107,7 @@ function emitAfter() {
     <silence-button class="silence-patination-item active">
       {{ pageNum }}
     </silence-button>
-    <app-link v-for="n in displayRightButtons" :key="n" :to="href?.(n) ?? '#'" @click="emitAfter">
+    <app-link v-for="n in displayRightButtons" :key="n" :to="link?.(n) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         {{ n }}
       </silence-button>
@@ -115,12 +115,12 @@ function emitAfter() {
     <div v-if="rightEllipsis" class="silence-pagination-ellipsis">
       ···
     </div>
-    <app-link v-if="rightEllipsis" :to="href?.(maxPageNum) ?? '#'" @click="emitAfter">
+    <app-link v-if="rightEllipsis" :to="link?.(maxPageNum) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         {{ maxPageNum }}
       </silence-button>
     </app-link>
-    <app-link v-if="next" :to="href?.(next ?? maxPageNum) ?? '#'" @click="emitAfter">
+    <app-link v-if="next" :to="link?.(next ?? maxPageNum) ?? '#'" @click="emitAfter">
       <silence-button class="silence-patination-item">
         下一页
       </silence-button>
@@ -128,7 +128,7 @@ function emitAfter() {
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-pagination {
   display: flex;
   gap: 8px;

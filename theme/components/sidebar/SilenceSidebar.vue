@@ -17,7 +17,7 @@ const search = computed(() => siteConfig.value.search)
   </div>
 </template>
 
-<style scoped>
+<style>
 .silence-sidebar {
   width: 230px;
   padding-right: 15px;
