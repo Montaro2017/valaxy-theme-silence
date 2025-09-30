@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-import { useCategories, usePostList, useSiteConfig, useTags } from 'valaxy'
+import type { CategoryList, Post } from 'valaxy'
+import { isCategoryList, useCategories, useSiteConfig, useTags } from 'valaxy'
 import { computed } from 'vue'
 import { useThemeConfig } from '../../composables'
+import { useAllPosts } from '../../utils/theme'
 
 const themeConfig = useThemeConfig()
 const siteConfig = useSiteConfig()
@@ -10,12 +12,27 @@ const avatar = computed(() => themeConfig.value.sidebar.avatar ?? siteConfig.val
 const author = computed(() => themeConfig.value.sidebar.author ?? siteConfig.value.author.name)
 const intro = computed(() => themeConfig.value.sidebar.intro ?? siteConfig.value.author.intro)
 
-const posts = usePostList()
-const categories = useCategories()
-const tags = useTags()
-
+const posts = useAllPosts()
 const postCount = computed(() => posts.value.length)
-const categoryCount = computed(() => categories.value.total)
+
+const categories = useCategories()
+const categoryCount = computed(() => {
+  function recursive(categories: Map<string, Post | CategoryList>) {
+    let count = 0
+    for (const [_, category] of categories) {
+      if (isCategoryList(category)) {
+        count++
+        if (category.children) {
+          count += recursive(category.children)
+        }
+      }
+    }
+    return count
+  }
+  return recursive(categories.value.children)
+})
+
+const tags = useTags()
 const tagCount = computed(() => tags.value.size)
 </script>
 

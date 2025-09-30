@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import type { CategoryList } from 'valaxy'
 import { isCategoryList } from 'valaxy'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 import { getCategoryLink } from '../utils/route'
 
 const props = withDefaults(defineProps<{
   category: CategoryList
-  defaultExpand?: boolean
+  defaultCollapse?: boolean
   hasParent?: boolean
 }>(), {
   hasParent: false,
@@ -21,32 +21,34 @@ const children = computed(() => {
 })
 
 const hasChildren = computed(() => children.value.length > 0)
-
-const expand = ref(props.defaultExpand ?? false)
 </script>
 
 <template>
-  <div class="silence-category-item" :class="{ expand }">
-    <div class="silence-category-item-inner" :class="{ 'has-parent': props.hasParent }" @click="expand = !expand">
-      <div class="silence-category-item-inner-left">
-        <div class="silence-category-item-inner-icon" :class="{ expand }">
-          <silence-icon v-if="hasChildren" icon="i-material-symbols-light-arrow-right" class="text-2xl" />
+  <div class="silence-category-item">
+    <silence-collapse :default-collapse="props.defaultCollapse">
+      <template #default="{ toggle, collapse }">
+        <div class="silence-category-item-title" :class="{ 'has-parent': hasParent }" @click="toggle">
+          <div class="silence-category-item-title-left">
+            <div class="silence-category-item-title-icon" :class="{ expand: !collapse }">
+              <silence-icon v-if="hasChildren" icon="i-material-symbols-light-arrow-right" class="text-2xl" />
+            </div>
+            <app-link :to="getCategoryLink(category)" @click.stop>
+              {{ category.name }}
+            </app-link>
+          </div>
+          <div class="silence-category-item-title-count">
+            {{ category.total }}
+          </div>
         </div>
-        <app-link :to="getCategoryLink(category)" @click.stop>
-          {{ category.name }}
-        </app-link>
-      </div>
-      <div class="silence-category-item-inner-count">
-        {{ category.total }}
-      </div>
-    </div>
-    <div v-if="hasChildren" class="silence-category-item-sub" :class="{ expand }">
-      <div class="silence-category-item-sub-inner">
-        <template v-for="child in children" :key="child.name">
-          <silence-category-item :category="child" :default-expand="props.defaultExpand" has-parent />
-        </template>
-      </div>
-    </div>
+      </template>
+      <template v-if="hasChildren" #content>
+        <div class="silence-category-item-sub">
+          <template v-for="child in children" :key="child.name">
+            <silence-category-item :category="child" :default-collapse="props.defaultCollapse" has-parent />
+          </template>
+        </div>
+      </template>
+    </silence-collapse>
   </div>
 </template>
 
@@ -55,77 +57,66 @@ const expand = ref(props.defaultExpand ?? false)
   cursor: pointer;
 }
 
-.silence-category-item-inner {
+.silence-category-item-title {
   display: flex;
   user-select: none;
+  align-items: center;
   position: relative;
   padding: 8px 16px 8px 8px;
-  align-items: center;
 }
 
-.has-parent.silence-category-item-inner::before {
-  content: '';
-  width: 1.5em;
-  left: 0;
-  position: absolute;
-  display: inline-block;
-  transform: translateX(-1.5em);
-  border-top: 2px dashed var(--border-color);
-}
-
-.silence-category-item-inner:hover {
+.silence-category-item-title:hover {
   background-color: var(--panel-bg-color);
 }
 
-.silence-category-item-inner-left {
+.silence-category-item-title-left {
   flex: 1;
   display: flex;
 }
 
-.silence-category-item-inner-count {
+.silence-category-item-title-icon {
+  width: 2em;
+  height: 2em;
+  transition: transform 0.2s ease;
+}
+
+.silence-category-item-title-icon.expand {
+  transform: rotate(90deg);
+}
+
+.silence-category-item-title-count {
   padding: 0 10px;
   border-radius: 4px;
   background-color: var(--panel-bg-color);
 }
 
-.silence-category-item-inner:hover .silence-category-item-inner-count {
+.silence-category-item-title:hover .silence-category-item-title-count {
   background-color: var(--blog-bg-color);
 }
 
-.silence-category-item-inner-icon {
-  width: 2em;
-  height: 2em;
-  transition: transform 0.2s ease-out;
-}
-
 .silence-category-item-sub {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.2s ease-out;
-}
-
-.silence-category-item-sub-inner {
-  min-height: 0;
   padding-left: 3em;
   position: relative;
-  overflow: hidden;
 }
 
-.silence-category-item-sub-inner::before {
+.silence-category-item-sub::before {
   content: '';
-  height: calc(100% - 22px);
   left: 0;
-  transform: translate(1.5em, 0);
-  position: absolute;
+  top: 0;
   display: inline-block;
-  border-left: 2px dashed var(--border-color);
+  position: absolute;
+  height: calc(100% - 22px);
+  transform: translate(calc(1.5em + 1px));
+  border-left: 2px solid var(--panel-bg-color);
 }
 
-.silence-category-item-sub.expand {
-  grid-template-rows: 1fr;
-}
-
-.silence-category-item-inner-icon.expand {
-  transform: rotate(90deg);
+.silence-category-item-title.has-parent::before {
+  content: '';
+  display: inline-block;
+  width: 1.5em;
+  left: 0;
+  position: absolute;
+  border-top: 2px solid var(--panel-bg-color);
+  transform: translate(calc(-1.5em - 1px));
 }
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { usePostList, useSiteConfig } from 'valaxy'
+import { useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
 
 import { useRoute } from 'vue-router'
@@ -7,7 +7,7 @@ import { useThemePagination } from '../utils/pagination'
 
 import { getCategoryLink, getFirstParam, getFirstQuery } from '../utils/route'
 
-import { scrollToTop } from '../utils/theme'
+import { scrollToTop, useAllPosts } from '../utils/theme'
 
 const siteConfig = useSiteConfig()
 const pageSize = computed(() => siteConfig.value.pageSize)
@@ -20,7 +20,7 @@ const pageNum = computed(() => Number(routePage.value ?? 1))
 
 const title = computed(() => `当前分类: ${category.value}`)
 
-const allPosts = usePostList()
+const allPosts = useAllPosts()
 const pagination = useThemePagination(
   allPosts,
   pageNum,

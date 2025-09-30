@@ -21,6 +21,7 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/[...path]': RouteRecordInfo<'/[...path]', '/:path(.*)', { path: ParamValue<true> }, { path: ParamValue<false> }>,
     '/about': RouteRecordInfo<'/about', '/about', Record<never, never>, Record<never, never>>,
+    '/archives': RouteRecordInfo<'/archives', '/archives', Record<never, never>, Record<never, never>, '/archives/'>,
     '/archives/': RouteRecordInfo<'/archives/', '/archives', Record<never, never>, Record<never, never>>,
     '/categories': RouteRecordInfo<'/categories', '/categories', Record<never, never>, Record<never, never>, '/categories/'>,
     '/categories/': RouteRecordInfo<'/categories/', '/categories', Record<never, never>, Record<never, never>>,
@@ -63,6 +64,10 @@ declare module 'vue-router/auto-routes' {
     'pages/about.md': {
       routes: '/about'
       views: never
+    }
+    '../theme/pages/archives.vue': {
+      routes: '/archives' | '/archives/'
+      views: 'default'
     }
     'pages/archives/index.md': {
       routes: '/archives/'

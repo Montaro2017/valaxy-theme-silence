@@ -1,4 +1,4 @@
-import type { CategoryList } from 'valaxy'
+import type { CategoryList, Post } from 'valaxy'
 import type { ComputedRef } from 'vue'
 import type { LocationQueryValue, RouteLocationNormalizedLoaded } from 'vue-router'
 import { isCategoryList } from 'valaxy'
@@ -43,4 +43,8 @@ export function getCategoryLink(category: string | CategoryList, page?: number) 
     return `/category/${category.name}${page ? `?page=${page}` : ''}`
   }
   return `/category/${category}${page ? `?page=${page}` : ''}`
+}
+
+export function getPostLink(post: Post) {
+  return post.path
 }

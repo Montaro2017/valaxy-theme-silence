@@ -24,6 +24,7 @@ export interface ThemeConfig {
     intro?: string
     tagLimit?: number
     categoryLimit?: number
+    archiveLimit?: number
     friends?: {
       title: string
       url: string

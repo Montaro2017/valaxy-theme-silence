@@ -15,7 +15,7 @@ const displayCategories = computed(() => new Map(Array.from(categories.value).fi
 <template>
   <silence-content-block class="silence-categories" title="所有分类">
     <div v-for="[name, category] in displayCategories" :key="name">
-      <silence-category-item :category="category" default-expand />
+      <silence-category-item :category="category" :default-collapse="false" />
     </div>
   </silence-content-block>
 </template>
