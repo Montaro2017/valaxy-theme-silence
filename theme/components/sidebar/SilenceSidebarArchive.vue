@@ -18,6 +18,6 @@ const archiveToShow = computed(() => {
 
 <template>
   <silence-sidebar-block title="归档">
-    <silence-sidebar-archive-item v-for="archive in archiveToShow" :key="archive[0]" :archive="archive" />
+    <silence-sidebar-archive-item v-for="archive in archiveToShow" :key="archive[1].id" :archive="archive" />
   </silence-sidebar-block>
 </template>

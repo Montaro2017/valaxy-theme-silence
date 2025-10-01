@@ -18,3 +18,17 @@ export function scrollToTop() {
   const { backToTop } = useBackToTop()
   backToTop?.()
 }
+
+export function useHighlight(selector: string | HTMLElement, option: {
+  className: string
+  duration?: number
+}) {
+  const { className, duration = 1000 } = option
+  const el = typeof selector === 'string' ? document.querySelector(selector) : selector
+  if (!el)
+    return
+  el.classList.add(className)
+  setTimeout(() => {
+    el.classList.remove(className)
+  }, duration)
+}

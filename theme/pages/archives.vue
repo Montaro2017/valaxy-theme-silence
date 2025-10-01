@@ -1,20 +1,39 @@
 <script lang="ts" setup>
 import type { dayjs } from 'valaxy'
+import { scrollTo } from 'valaxy'
+import { nextTick } from 'vue'
+import { useRoute } from 'vue-router'
 import { useArchives } from '../utils/archive'
 import { getPostLink } from '../utils/route'
+import { useHighlight } from '../utils/theme'
 
 const archives = useArchives()
 
 function toMonthDay(date: dayjs.Dayjs) {
   return date.format('MM-DD')
 }
+
+const route = useRoute()
+nextTick(() => {
+  if (route.hash) {
+    setTimeout(() => {
+      scrollTo(document.body, route.hash, {
+        smooth: true,
+      })
+      useHighlight(route.hash, {
+        className: 'silence-archive-highlight',
+        duration: 2000,
+      })
+    }, 0)
+  }
+})
 </script>
 
 <template>
   <silence-content-block title="文章归档" class="silence-archives">
-    <silence-collapse v-for="[yearMonth, { date, posts }] in archives" :key="yearMonth" :default-collapse="false">
+    <silence-collapse v-for="[yearMonth, { id, date, posts }] in archives" :id="id" :key="id" :default-collapse="false">
       <template #default="{ toggle, collapse }">
-        <div :id="yearMonth" class="silence-archive-title" @click="toggle">
+        <div class="silence-archive-title" @click="toggle">
           <div class="silence-archive-title-left">
             <div class="silence-archive-title-icon" :class="{ expand: !collapse }">
               <silence-icon icon="i-material-symbols-light-arrow-right" class="text-2xl" />
@@ -114,5 +133,16 @@ function toMonthDay(date: dayjs.Dayjs) {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@keyframes highlight {
+  40% {
+    background-color: var(--panel-bg-color);
+    filter: brightness(95%);
+  }
+}
+
+.silence-archive-highlight {
+  animation: highlight 2s ease;
 }
 </style>

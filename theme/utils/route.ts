@@ -1,4 +1,4 @@
-import type { CategoryList, Post } from 'valaxy'
+import type { CategoryList, dayjs, Post } from 'valaxy'
 import type { ComputedRef } from 'vue'
 import type { LocationQueryValue, RouteLocationNormalizedLoaded } from 'vue-router'
 import { isCategoryList } from 'valaxy'
@@ -49,6 +49,6 @@ export function getPostLink(post: Post) {
   return post.path
 }
 
-export function getArchiveLink(dateMonth: string) {
-  return `/archives#${dateMonth}`
+export function getArchiveLink(archive: [string, { id: string, date: dayjs.Dayjs, posts: Post[] }]) {
+  return `/archives#${archive[1].id}`
 }
