@@ -48,3 +48,7 @@ export function getCategoryLink(category: string | CategoryList, page?: number) 
 export function getPostLink(post: Post) {
   return post.path
 }
+
+export function getArchiveLink(dateMonth: string) {
+  return `/archives#${dateMonth}`
+}

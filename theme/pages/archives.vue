@@ -14,7 +14,7 @@ function toMonthDay(date: dayjs.Dayjs) {
   <silence-content-block title="文章归档" class="silence-archives">
     <silence-collapse v-for="[yearMonth, { date, posts }] in archives" :key="yearMonth" :default-collapse="false">
       <template #default="{ toggle, collapse }">
-        <div class="silence-archive-title" @click="toggle">
+        <div :id="yearMonth" class="silence-archive-title" @click="toggle">
           <div class="silence-archive-title-left">
             <div class="silence-archive-title-icon" :class="{ expand: !collapse }">
               <silence-icon icon="i-material-symbols-light-arrow-right" class="text-2xl" />

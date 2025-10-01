@@ -18,6 +18,6 @@ const tagsToShow = computed(() => {
 
 <template>
   <silence-sidebar-block class="silence-sidebar-tags" title="标签">
-    <silence-tag-item v-for="tag in tagsToShow" :key="tag[0]" :tag="tag" />
+    <silence-sidebar-tag-item v-for="tag in tagsToShow" :key="tag[0]" :tag="tag" />
   </silence-sidebar-block>
 </template>
