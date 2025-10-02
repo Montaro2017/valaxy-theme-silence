@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { dayjs } from 'valaxy'
 import { scrollTo } from 'valaxy'
-import { nextTick } from 'vue'
+import { nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useArchives } from '../utils/archive'
 import { getPostLink } from '../utils/route'
@@ -13,17 +13,29 @@ function toMonthDay(date: dayjs.Dayjs) {
   return date.format('MM-DD')
 }
 
+function scrollToAndHighlight(hash: string) {
+  scrollTo(document.body, hash, {
+    smooth: true,
+  })
+  useHighlight(hash, {
+    className: 'silence-archive-highlight',
+    duration: 2000,
+  })
+}
+
 const route = useRoute()
 nextTick(() => {
   if (route.hash) {
     setTimeout(() => {
-      scrollTo(document.body, route.hash, {
-        smooth: true,
-      })
-      useHighlight(route.hash, {
-        className: 'silence-archive-highlight',
-        duration: 2000,
-      })
+      scrollToAndHighlight(route.hash)
+    }, 0)
+  }
+})
+
+watch(() => route.hash, (hash) => {
+  if (hash) {
+    setTimeout(() => {
+      scrollToAndHighlight(hash)
     }, 0)
   }
 })
@@ -66,6 +78,11 @@ nextTick(() => {
   </silence-content-block>
 </template>
 
+<route lang="yaml">
+meta:
+  title: 文章归档
+</route>
+
 <style>
 .silence-archive-title {
   display: flex;
@@ -107,7 +124,13 @@ nextTick(() => {
 }
 
 .silence-archive-posts {
+  font-size: 16px;
+  font-weight: 300;
   padding-left: 40px;
+}
+
+.silence-archive-posts a {
+  font-weight: 300 !important;
 }
 
 .silence-archive-post {

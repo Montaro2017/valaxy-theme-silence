@@ -8,7 +8,7 @@ export const useSilenceAppStore = defineStore('silence', () => {
   const themeConfig = useThemeConfig()
   const color = useStorage('silence.color', themeConfig.value.colors?.[0] ?? '#ff5722')
   watch(color, () => {
-    (window?.document || document).querySelector('html')?.setAttribute('color', color.value)
+    document.documentElement.setAttribute('color', color.value)
   }, {
     immediate: true,
   })
@@ -19,6 +19,11 @@ export const useSilenceAppStore = defineStore('silence', () => {
       attribute: 'mode',
       valueDark: 'dark',
       valueLight: 'light',
+      onChanged: (isDark, defaultHandler, mode) => {
+        defaultHandler(mode)
+        // valaxy自带html.dark样式
+        document.documentElement.classList.toggle('dark', isDark)
+      },
     },
   })
 

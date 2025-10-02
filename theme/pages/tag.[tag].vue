@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router'
 
 import { useThemePagination } from '../utils/pagination'
 import { getFirstParam, getFirstQuery, getTagLink } from '../utils/route'
-import { scrollToTop, useAllPosts } from '../utils/theme'
+import { scrollToTop, setTitle, useAllPosts } from '../utils/theme'
 
 const siteConfig = useSiteConfig()
 const pageSize = computed(() => siteConfig.value.pageSize)
@@ -17,7 +17,7 @@ const tag = getFirstParam(route, 'tag')
 const routePage = getFirstQuery(route, 'page')
 const pageNum = computed(() => Number(routePage.value ?? 1))
 
-const title = computed(() => `当前标签: ${tag.value}`)
+setTitle(`${tag.value} - 标签`)
 
 const allPosts = useAllPosts()
 const pagination = useThemePagination(
@@ -35,7 +35,7 @@ function tagPageLink(n: number) {
 </script>
 
 <template>
-  <silence-content-block :title="title">
+  <silence-content-block :title="`当前标签: ${tag}`">
     <silence-post-list :posts="posts" :pin-mark="false" />
     <silence-pagination
       :total="total" :page-size="pageSize" :page-num="pageNum" :link="tagPageLink"
@@ -43,8 +43,3 @@ function tagPageLink(n: number) {
     />
   </silence-content-block>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: default
-</route>

@@ -59,6 +59,7 @@ export default defineConfig<ThemeConfig>({
       intro: '你所热爱的，就是你的生活',
       tagLimit: 3,
       categoryLimit: 4,
+      archiveLimit: 4,
     },
     footer: {
       copyright: 'Copyright © 2025 XXXXX',
@@ -67,8 +68,9 @@ export default defineConfig<ThemeConfig>({
         icp: '苏ICP备xxxxxxxx号',
       },
       powered: {
-        enable: false,
+        enable: true,
       },
     },
   },
+  devtools: false,
 })

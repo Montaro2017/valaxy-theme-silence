@@ -25,8 +25,8 @@ const powered = computed(() => themeConfig.value.footer?.powered)
     </div>
     <div v-if="powered?.enable" class="silence-footer-powered">
       <span>由 </span>
-      <span><a>Silence {{ valaxyPkg.version }}</a></span>
-      <span v-if="powered!.withSilence"> & <a>Theme Silence {{ themePkg.version }}</a></span>
+      <span><app-link href="https://github.com/YunYouJun/valaxy">Valaxy {{ valaxyPkg.version }}</app-link></span>
+      <span v-if="powered!.withSilence"> & <app-link href="https://github.com/Montaro2017/valaxy-theme-silence">Theme Silence {{ themePkg.version }}</app-link></span>
       <span> 驱动</span>
     </div>
   </div>
@@ -41,8 +41,7 @@ const powered = computed(() => themeConfig.value.footer?.powered)
   border-top: 1px solid var(--border-color);
 }
 
-.silence-footer-beian a {
-  font-size: 14px;
+.silence-footer a {
   font-weight: 300 !important;
 }
 

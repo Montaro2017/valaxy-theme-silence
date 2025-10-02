@@ -7,7 +7,7 @@ import { useThemePagination } from '../utils/pagination'
 
 import { getCategoryLink, getFirstParam, getFirstQuery } from '../utils/route'
 
-import { scrollToTop, useAllPosts } from '../utils/theme'
+import { scrollToTop, setTitle, useAllPosts } from '../utils/theme'
 
 const siteConfig = useSiteConfig()
 const pageSize = computed(() => siteConfig.value.pageSize)
@@ -18,7 +18,7 @@ const category = getFirstParam(route, 'category')
 const routePage = getFirstQuery(route, 'page')
 const pageNum = computed(() => Number(routePage.value ?? 1))
 
-const title = computed(() => `当前分类: ${category.value}`)
+setTitle(`${category.value} - 分类`)
 
 const allPosts = useAllPosts()
 const pagination = useThemePagination(
@@ -36,7 +36,7 @@ function categoryPageLink(n: number) {
 </script>
 
 <template>
-  <silence-content-block :title="title">
+  <silence-content-block :title="`当前分类: ${category}`">
     <silence-post-list :posts="posts" :pin-mark="false" />
     <silence-pagination
       :total="total" :page-size="pageSize" :page-num="pageNum" :link="categoryPageLink"

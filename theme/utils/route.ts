@@ -19,14 +19,7 @@ export function getFirstQuery(route: RouteLocationNormalizedLoaded, key: string)
 
 export function getFirstParam(route: RouteLocationNormalizedLoaded, key: string): ComputedRef<LocationQueryValue> {
   return computed(() => {
-    const param = route.params[key]
-    if (!param) {
-      return null
-    }
-    if (Array.isArray(param)) {
-      return param[0]
-    }
-    return param
+    return route.params[key] as string
   })
 }
 

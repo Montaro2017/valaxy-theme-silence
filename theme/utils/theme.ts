@@ -1,7 +1,9 @@
 import type { Post } from 'valaxy'
 
 import type { ComputedRef } from 'vue'
+import { useHead } from '@unhead/vue'
 import { storeToRefs } from 'pinia'
+
 import { useBackToTop, useSiteStore } from 'valaxy'
 
 import { computed } from 'vue'
@@ -31,4 +33,10 @@ export function useHighlight(selector: string | HTMLElement, option: {
   setTimeout(() => {
     el.classList.remove(className)
   }, duration)
+}
+
+export function setTitle(title: ComputedRef<string> | string) {
+  useHead({
+    title,
+  })
 }
