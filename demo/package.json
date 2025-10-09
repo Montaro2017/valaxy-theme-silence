@@ -11,6 +11,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "radash": "^12.1.1",
     "valaxy": "^0.26.6",
     "valaxy-theme-starter": "workspace:*"
   }

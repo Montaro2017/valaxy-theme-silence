@@ -20,7 +20,7 @@ const categoryCount = computed(() => {
   function recursive(categories: Map<string, Post | CategoryList>) {
     let count = 0
     for (const [_, category] of categories) {
-      if (isCategoryList(category)) {
+      if (isCategoryList(category) && category.name !== 'Uncategorized') {
         count++
         if (category.children) {
           count += recursive(category.children)

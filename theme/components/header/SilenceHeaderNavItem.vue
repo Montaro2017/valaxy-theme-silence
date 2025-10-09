@@ -49,7 +49,8 @@ const hasChildren = computed(() => ((item.value as NavItemWithChildren).children
   transition: transform 0.2s ease-in-out;
 }
 
-.silence-header-nav-item:hover {
+.silence-header-nav-item:hover,
+.silence-header-nav-item:hover > a {
   color: var(--theme-color);
 }
 

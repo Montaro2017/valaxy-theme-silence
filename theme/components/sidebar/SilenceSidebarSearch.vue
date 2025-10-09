@@ -17,7 +17,7 @@
   height: 32px;
 }
 
-input {
+.silence-sidebar-search input {
   min-width: 0;
   padding: 0 6px;
   box-sizing: border-box;

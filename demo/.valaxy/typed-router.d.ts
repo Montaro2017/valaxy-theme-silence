@@ -30,6 +30,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/draft': RouteRecordInfo<'/posts/draft', '/posts/draft', Record<never, never>, Record<never, never>>,
     '/posts/hello-valaxy': RouteRecordInfo<'/posts/hello-valaxy', '/posts/hello-valaxy', Record<never, never>, Record<never, never>>,
     '/posts/i18n': RouteRecordInfo<'/posts/i18n', '/posts/i18n', Record<never, never>, Record<never, never>>,
+    '/posts/logstash-sqlserver-pagination': RouteRecordInfo<'/posts/logstash-sqlserver-pagination', '/posts/logstash-sqlserver-pagination', Record<never, never>, Record<never, never>>,
     '/posts/long-title': RouteRecordInfo<'/posts/long-title', '/posts/long-title', Record<never, never>, Record<never, never>>,
     '/posts/post1': RouteRecordInfo<'/posts/post1', '/posts/post1', Record<never, never>, Record<never, never>>,
     '/posts/post2': RouteRecordInfo<'/posts/post2', '/posts/post2', Record<never, never>, Record<never, never>>,
@@ -99,6 +100,10 @@ declare module 'vue-router/auto-routes' {
     }
     'pages/posts/i18n.md': {
       routes: '/posts/i18n'
+      views: never
+    }
+    'pages/posts/logstash-sqlserver-pagination.md': {
+      routes: '/posts/logstash-sqlserver-pagination'
       views: never
     }
     'pages/posts/long-title.md': {

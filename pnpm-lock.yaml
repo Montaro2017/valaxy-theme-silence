@@ -38,6 +38,9 @@ importers:
 
   demo:
     dependencies:
+      radash:
+        specifier: ^12.1.1
+        version: 12.1.1
       valaxy:
         specifier: ^0.26.6
         version: 0.26.6(@babel/parser@7.28.4)(@types/markdown-it@14.1.2)(@types/node@24.5.2)(@vue/compiler-dom@3.5.21)(@vue/compiler-sfc@3.5.21)(axios@1.12.2)(change-case@5.4.4)(eslint@9.36.0(jiti@2.6.0))(postcss@8.5.6)(prettier@3.6.2)(rollup@4.52.0)(terser@5.44.0)(typescript@5.9.2)(yaml@2.8.1)
@@ -3572,6 +3575,10 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  radash@12.1.1:
+    resolution: {integrity: sha512-h36JMxKRqrAxVD8201FrCpyeNuUY9Y5zZwujr20fFO77tpUtGa6EZzfKw/3WaiBX95fq7+MpsuMLNdSnORAwSA==}
+    engines: {node: '>=14.18.0'}
 
   raw-body@3.0.1:
     resolution: {integrity: sha512-9G8cA+tuMS75+6G/TzW8OtLzmBDMo8p1JRxN5AZ+LAp8uxGA8V8GZm4GQ4/N5QNQEnLmg6SS7wyuSmbKepiKqA==}
@@ -8395,6 +8402,8 @@ snapshots:
   quansync@0.2.11: {}
 
   queue-microtask@1.2.3: {}
+
+  radash@12.1.1: {}
 
   raw-body@3.0.1:
     dependencies:
