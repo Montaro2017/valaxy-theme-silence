@@ -31,5 +31,6 @@ const props = withDefaults(defineProps<{
 
 .silence-layout-content {
   flex: 1;
+  max-width: 100%;
 }
 </style>

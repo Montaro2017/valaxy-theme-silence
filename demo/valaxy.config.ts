@@ -7,6 +7,12 @@ import { defineConfig } from 'valaxy'
  */
 export default defineConfig<ThemeConfig>({
   theme: 'starter',
+  markdown: {
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark',
+    },
+  },
   themeConfig: {
     colors: [
       '#ff5722',

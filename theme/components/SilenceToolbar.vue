@@ -110,7 +110,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
   cursor: pointer;
   position: relative;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   background-color: var(--theme-color);
   box-shadow: var(--toolbar-box-shadow);
 }
@@ -137,7 +137,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
   border-radius: 4px;
   position: absolute;
   color: var(--text-color);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   background-color: var(--blog-bg-color);
   box-shadow: var(--toolbar-box-shadow);
 }
@@ -178,7 +178,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
   z-index: 1000;
   position: fixed;
   padding: 20px 50px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   transform: translate(-50%, 100%);
   box-shadow: var(--toolbar-box-shadow);
   background-color: var(--blog-bg-color);

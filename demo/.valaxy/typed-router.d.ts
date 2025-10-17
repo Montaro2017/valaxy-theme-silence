@@ -21,21 +21,22 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/[...path]': RouteRecordInfo<'/[...path]', '/:path(.*)', { path: ParamValue<true> }, { path: ParamValue<false> }>,
     '/about': RouteRecordInfo<'/about', '/about', Record<never, never>, Record<never, never>>,
-    '/archives': RouteRecordInfo<'/archives', '/archives', Record<never, never>, Record<never, never>, '/archives/'>,
-    '/archives/': RouteRecordInfo<'/archives/', '/archives', Record<never, never>, Record<never, never>>,
-    '/categories': RouteRecordInfo<'/categories', '/categories', Record<never, never>, Record<never, never>, '/categories/'>,
-    '/categories/': RouteRecordInfo<'/categories/', '/categories', Record<never, never>, Record<never, never>>,
+    '/archives': RouteRecordInfo<'/archives', '/archives', Record<never, never>, Record<never, never>>,
+    '/categories': RouteRecordInfo<'/categories', '/categories', Record<never, never>, Record<never, never>>,
     '/category.[category]': RouteRecordInfo<'/category.[category]', '/category/:category', { category: ParamValue<true> }, { category: ParamValue<false> }>,
     '/notes/': RouteRecordInfo<'/notes/', '/notes', Record<never, never>, Record<never, never>>,
     '/posts/draft': RouteRecordInfo<'/posts/draft', '/posts/draft', Record<never, never>, Record<never, never>>,
     '/posts/hello-valaxy': RouteRecordInfo<'/posts/hello-valaxy', '/posts/hello-valaxy', Record<never, never>, Record<never, never>>,
     '/posts/i18n': RouteRecordInfo<'/posts/i18n', '/posts/i18n', Record<never, never>, Record<never, never>>,
+    '/posts/idea-jdk21-compile-jdk17/': RouteRecordInfo<'/posts/idea-jdk21-compile-jdk17/', '/posts/idea-jdk21-compile-jdk17', Record<never, never>, Record<never, never>>,
     '/posts/logstash-sqlserver-pagination': RouteRecordInfo<'/posts/logstash-sqlserver-pagination', '/posts/logstash-sqlserver-pagination', Record<never, never>, Record<never, never>>,
     '/posts/long-title': RouteRecordInfo<'/posts/long-title', '/posts/long-title', Record<never, never>, Record<never, never>>,
+    '/posts/markdown': RouteRecordInfo<'/posts/markdown', '/posts/markdown', Record<never, never>, Record<never, never>>,
     '/posts/post1': RouteRecordInfo<'/posts/post1', '/posts/post1', Record<never, never>, Record<never, never>>,
     '/posts/post2': RouteRecordInfo<'/posts/post2', '/posts/post2', Record<never, never>, Record<never, never>>,
     '/posts/post3': RouteRecordInfo<'/posts/post3', '/posts/post3', Record<never, never>, Record<never, never>>,
     '/posts/post4': RouteRecordInfo<'/posts/post4', '/posts/post4', Record<never, never>, Record<never, never>>,
+    '/posts/springboot-annotation-pagination/': RouteRecordInfo<'/posts/springboot-annotation-pagination/', '/posts/springboot-annotation-pagination', Record<never, never>, Record<never, never>>,
     '/posts/test': RouteRecordInfo<'/posts/test', '/posts/test', Record<never, never>, Record<never, never>>,
     '/search': RouteRecordInfo<'/search', '/search', Record<never, never>, Record<never, never>>,
     '/tag.[tag]': RouteRecordInfo<'/tag.[tag]', '/tag/:tag', { tag: ParamValue<true> }, { tag: ParamValue<false> }>,
@@ -67,19 +68,11 @@ declare module 'vue-router/auto-routes' {
       views: never
     }
     '../theme/pages/archives.vue': {
-      routes: '/archives' | '/archives/'
-      views: 'default'
-    }
-    'pages/archives/index.md': {
-      routes: '/archives/'
+      routes: '/archives'
       views: never
     }
     '../theme/pages/categories.vue': {
-      routes: '/categories' | '/categories/'
-      views: 'default'
-    }
-    'pages/categories/index.md': {
-      routes: '/categories/'
+      routes: '/categories'
       views: never
     }
     '../theme/pages/category.[category].vue': {
@@ -102,12 +95,20 @@ declare module 'vue-router/auto-routes' {
       routes: '/posts/i18n'
       views: never
     }
+    'pages/posts/idea-jdk21-compile-jdk17/index.md': {
+      routes: '/posts/idea-jdk21-compile-jdk17/'
+      views: never
+    }
     'pages/posts/logstash-sqlserver-pagination.md': {
       routes: '/posts/logstash-sqlserver-pagination'
       views: never
     }
     'pages/posts/long-title.md': {
       routes: '/posts/long-title'
+      views: never
+    }
+    'pages/posts/markdown.md': {
+      routes: '/posts/markdown'
       views: never
     }
     'pages/posts/post1.md': {
@@ -124,6 +125,10 @@ declare module 'vue-router/auto-routes' {
     }
     'pages/posts/post4.md': {
       routes: '/posts/post4'
+      views: never
+    }
+    'pages/posts/springboot-annotation-pagination/index.md': {
+      routes: '/posts/springboot-annotation-pagination/'
       views: never
     }
     'pages/posts/test.md': {

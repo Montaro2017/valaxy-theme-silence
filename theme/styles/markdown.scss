@@ -1,0 +1,119 @@
+@use 'valaxy/client/styles/mixins/index.scss' as *;
+
+// use common code styles, you also can override them or copy/modify them
+@use 'valaxy/client/styles/common/code.scss' as *;
+@use 'valaxy/client/styles/common/markdown.scss' as *;
+
+@use 'valaxy/client/styles/components/code.scss' as *;
+@use 'valaxy/client/styles/components/code-group.scss' as *;
+@use 'valaxy/client/styles/components/custom-block.scss' as *;
+
+.markdown-body {
+  --c-toc-link: var(--va-c-text-light);
+}
+
+html.dark {
+  .markdown-body {
+    --c-toc-link: var(--va-c-text-dark);
+  }
+}
+
+.markdown-body {
+  padding-top: 0.5rem;
+  word-wrap: break-word;
+  font-size: 16px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-color);
+    font-weight: 900;
+    margin: 10px 0;
+  }
+
+  h1 {
+    font-size: 21px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 19px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  h5 {
+    font-size: 17px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+
+  ul {
+    li > p {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var(--theme-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    opacity: 0.7;
+  }
+
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code,
+  h5 code,
+  h6 code,
+  p > code,
+  li > code,
+  table code {
+    line-height: 1.2;
+    font-weight: 300;
+    font-family: consolas !important;
+    vertical-align: middle;
+    margin: 0 3px;
+    background-color: var(--code-bg-color) !important;
+    color: var(--text-color);
+    font-size: 14px !important;
+    padding: 0.2em 0.3em !important;
+    border-radius: 3px !important;
+    border: none !important;
+  }
+
+  figure {
+    display: block;
+    margin: 15px 0px 15px 0px;
+    border-radius: 3px;
+    box-shadow: var(--pane-box-shadow);
+  }
+
+  blockquote {
+    border: none;
+    margin: 15px 0px;
+    color: inherit;
+    border-radius: 4px;
+    padding: 1px 15px;
+    border-left: 4px solid var(--theme-color);
+    background-color: var(--panel-bg-color);
+
+    p {
+      font-style: normal;
+      font-weight: 300;
+    }
+  }
+}

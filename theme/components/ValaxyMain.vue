@@ -16,9 +16,8 @@ const siteConfig = useSiteConfig()
         <div class="content" flex="~ col grow" w="full" p="l-4 lt-md:0">
           <slot name="main-header" />
           <slot name="main-header-after" />
-
           <slot name="main-content">
-            <div class="markdown-body max-w-none pb-8 prose">
+            <div class="markdown-body max-w-none pb-8 prose dark:prose-invert">
               <ValaxyMd :frontmatter="frontmatter">
                 <slot name="main-content-md" />
                 <slot />

@@ -1,8 +1,8 @@
 {
   "name": "valaxy-theme-starter",
   "type": "module",
-  "version": "0.3.2",
-  "packageManager": "pnpm@10.17.1",
+  "version": "0.3.4",
+  "packageManager": "pnpm@10.18.2",
   "author": {
     "email": "me@yunyoujun.cn",
     "name": "YunYouJun",
@@ -22,11 +22,9 @@
   "main": "client/index.ts",
   "types": "types/index.d.ts",
   "dependencies": {
-    "@iconify-json/ant-design": "^1.2.5",
-    "@iconify-json/simple-icons": "^1.2.52"
+    "@iconify-json/material-symbols-light": "^1.2.39"
   },
   "devDependencies": {
-    "@iconify-json/material-symbols-light": "^1.2.39",
     "valaxy": "^0.26.6"
   }
 }
