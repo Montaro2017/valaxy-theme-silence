@@ -26,7 +26,7 @@ const count = computed(() => props.tag[1].count)
   padding: 0 12px;
   display: inline-block;
   margin: 0 6px 6px 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   background-color: var(--panel-bg-color);
 }
 

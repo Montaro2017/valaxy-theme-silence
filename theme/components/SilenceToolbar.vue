@@ -96,6 +96,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
   position: fixed;
   right: 30px;
   bottom: 30px;
+  z-index: 1000;
 }
 
 .silence-toolbar-more {

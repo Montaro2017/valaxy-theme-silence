@@ -9,10 +9,11 @@ const themeConfig = useThemeConfig()
 const categoryLimit = computed(() => themeConfig.value.sidebar.categoryLimit ?? 0)
 
 const categoriesToShow = computed(() => {
+  const filteredCategories = Array.from(categories.value).filter(([name, _]) => name !== 'Uncategorized')
   if (categoryLimit.value > 0) {
-    return new Map(Array.from(categories.value).filter(([name, _]) => name !== 'Uncategorized').slice(0, categoryLimit.value))
+    return new Map(filteredCategories.slice(0, categoryLimit.value))
   }
-  return categories.value
+  return new Map(filteredCategories)
 })
 </script>
 

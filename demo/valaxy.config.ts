@@ -63,9 +63,9 @@ export default defineConfig<ThemeConfig>({
     sidebar: {
       avatar: '/assets/avatar.jpg',
       intro: '你所热爱的，就是你的生活',
-      tagLimit: 3,
-      categoryLimit: 4,
-      archiveLimit: 4,
+      tagLimit: 0,
+      categoryLimit: 0,
+      archiveLimit: 0,
     },
     footer: {
       copyright: 'Copyright © 2025 XXXXX',
