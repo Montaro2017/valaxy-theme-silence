@@ -36,7 +36,7 @@ a:hover {
   background: var(--theme-color);
   opacity: 0.75;
   position: fixed;
-  z-index: 1024;
+  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;

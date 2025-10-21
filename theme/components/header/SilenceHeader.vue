@@ -3,6 +3,12 @@ import { useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
 import { useThemeConfig } from '../../composables'
 
+withDefaults(defineProps<{
+  isMobile?: boolean
+}>(), {
+  isMobile: false,
+})
+
 const siteConfig = useSiteConfig()
 const themeConfig = useThemeConfig()
 
@@ -15,14 +21,15 @@ const navItems = computed(() => themeConfig.value.header?.navItems ?? [])
 
 <template>
   <div class="silence-header">
-    <div class="silence-header-title">
+    <div class="silence-header-title flex items-center">
       <app-link to="/">
         {{ title }}
       </app-link>
     </div>
-    <div class="silence-header-navigator">
+    <div v-if="!isMobile" class="silence-header-navigator">
       <silence-header-nav-item v-for="item in navItems" :key="item.title" :item="item" />
     </div>
+    <silence-icon v-else icon="i-material-symbols-light-menu" class="cursor-pointer text-size-20px" />
   </div>
 </template>
 

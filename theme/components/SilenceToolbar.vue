@@ -55,7 +55,7 @@ watch(showMore, (newValue) => {
 })
 
 const silenceAppStore = useSilenceAppStore()
-const { toggleDark } = silenceAppStore
+const { toggleDark, toggleToc } = silenceAppStore
 const { color, isDark } = storeToRefs(silenceAppStore)
 </script>
 
@@ -74,7 +74,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
     <div class="silence-toolbar-btn-top silence-toolbar-btn" @click="scrollToTop">
       <div class="i-material-symbols-light-keyboard-arrow-up" />
     </div>
-    <div v-if="tocBtn" class="silence-toolbar-menu silence-toolbar-btn">
+    <div v-if="tocBtn" class="silence-toolbar-toc silence-toolbar-btn" @click="toggleToc">
       <div class="i-material-symbols-light-menu" />
     </div>
     <div class="silence-toolbar-palette">
@@ -169,7 +169,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
   transform: translate(0, -200%);
 }
 
-.show-more .silence-toolbar-menu {
+.show-more .silence-toolbar-toc {
   transform: translate(-350%, 0);
 }
 

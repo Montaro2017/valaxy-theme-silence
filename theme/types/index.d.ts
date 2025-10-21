@@ -1,6 +1,5 @@
-export namespace StarterTheme {
+export namespace SilenceTheme {
   export type Config = ThemeConfig
-  export type Sidebar = any
 }
 
 /**
@@ -45,6 +44,24 @@ export interface ThemeConfig {
       withSilence?: boolean
     }
   }>
+
+  post: {
+    signature?: Partial<Signature>
+
+    sponsor?: {
+      enable?: boolean
+      text?: string
+      alipay?: string
+      paypal?: string
+      wechat?: string
+    }
+
+    toc?: {
+      active?: boolean
+      serialNumber?: boolean
+    }
+  }
+
 }
 
 export interface NavItem {
@@ -53,8 +70,16 @@ export interface NavItem {
   target?: string
 }
 
-export interface NavItemWithChildren extends NavItem {
+export type NavItemWithChildren = NavItem & {
   children?: NavItem[]
 }
 
-export type ThemeUserConfig = Partial<ThemeConfig>
+export interface Signature {
+  enable: boolean
+  author: string
+  license: {
+    name: string
+    url: string
+  }
+  remark: string | null
+}

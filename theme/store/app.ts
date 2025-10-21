@@ -1,12 +1,14 @@
 import { useStorage } from '@vueuse/core'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { useValaxyDark } from 'valaxy'
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useThemeConfig } from '../composables'
 
 export const useSilenceAppStore = defineStore('silence', () => {
   const themeConfig = useThemeConfig()
+
   const color = useStorage('silence.color', themeConfig.value.colors?.[0] ?? '#ff5722')
+
   watch(color, () => {
     document.documentElement.setAttribute('color', color.value)
   }, {
@@ -42,10 +44,17 @@ export const useSilenceAppStore = defineStore('silence', () => {
     }
   })
 
+  const toc = ref(false)
+  function toggleToc() {
+    toc.value = !toc.value
+  }
+
   return {
     color,
     isDark,
     toggleDark,
+    toc,
+    toggleToc,
   }
 })
 

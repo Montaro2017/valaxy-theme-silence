@@ -1,44 +1,55 @@
 <script lang="ts" setup>
-import type { PageData, Post } from 'valaxy'
+import type { Post } from 'valaxy'
 import { useSiteConfig } from 'valaxy'
+import { computed } from 'vue'
+import { useThemeConfig } from '../composables'
+import { useSignature, useSponsor } from '../utils/theme'
 
-defineProps<{
+const props = defineProps<{
   frontmatter: Post
-  data?: PageData
 }>()
 const siteConfig = useSiteConfig()
+
+const signature = useSignature()
+const sponsor = useSponsor()
+
+const themeConfig = useThemeConfig()
+
+const defaultToc = computed(() => {
+  return props.frontmatter.toc ?? themeConfig.value.post.toc?.active ?? false
+})
+
+const tocSerialNumber = computed(() => {
+  return themeConfig.value.post.toc?.serialNumber ?? true
+})
 </script>
 
 <template>
-  <main>
-    <div w="full" flex="~">
-      <slot name="main">
-        <div class="content" flex="~ col grow" w="full" p="l-4 lt-md:0">
-          <slot name="main-header" />
-          <slot name="main-header-after" />
-          <slot name="main-content">
-            <div class="markdown-body max-w-none pb-8 prose dark:prose-invert">
-              <ValaxyMd :frontmatter="frontmatter">
-                <slot name="main-content-md" />
-                <slot />
-              </ValaxyMd>
-            </div>
-            <slot name="main-content-after" />
-          </slot>
-        </div>
-
-        <slot name="main-nav-before" />
-
-        <slot name="main-nav" />
-
-        <slot name="main-nav-after" />
-
-        <slot v-if="siteConfig.comment.enable && frontmatter.comment !== false" name="comment" />
-
-        <slot name="footer" />
-      </slot>
-    </div>
-
-    <slot name="aside" />
-  </main>
+  <div class="silence-post">
+    <header class="silence-post-title">
+      {{ frontmatter.title }}
+    </header>
+    <main>
+      <div class="max-w-none prose dark:prose-invert">
+        <ValaxyMd :frontmatter="frontmatter">
+          <slot name="main-content-md" />
+        </ValaxyMd>
+      </div>
+      <silence-signature v-if="signature.enable" :signature="signature" />
+      <silence-post-info :frontmatter="frontmatter" />
+      <silence-sponsor v-if="sponsor.enable" :sponsor="sponsor" />
+      <silence-post-nav />
+    </main>
+    <footer>
+      <silence-post-toc :default-toc="defaultToc" :serial-number="tocSerialNumber" />
+      <slot v-if="siteConfig.comment.enable && frontmatter.comment !== false" name="comment" />
+    </footer>
+  </div>
 </template>
+
+<style>
+.silence-post-title {
+  font-size: 21px;
+  line-height: 1.2;
+}
+</style>

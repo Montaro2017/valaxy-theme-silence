@@ -22,6 +22,7 @@ const search = computed(() => siteConfig.value.search)
   width: 230px;
   padding-right: 15px;
   margin-right: 15px;
+  box-sizing: content-box;
   border-right: 1px solid var(--border-color);
 }
 </style>

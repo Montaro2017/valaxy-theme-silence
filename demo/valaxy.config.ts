@@ -77,6 +77,20 @@ export default defineConfig<ThemeConfig>({
         enable: true,
       },
     },
+    post: {
+      signature: {
+        enable: true,
+      },
+      sponsor: {
+        enable: true,
+        alipay: '/alipay.jpg',
+        wechat: '/wechat.png',
+      },
+      toc: {
+        active: false,
+        serialNumber: true,
+      },
+    },
   },
   devtools: false,
 })

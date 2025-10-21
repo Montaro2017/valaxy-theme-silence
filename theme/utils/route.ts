@@ -1,4 +1,4 @@
-import type { CategoryList, dayjs, Post } from 'valaxy'
+import type { CategoryList, dayjs, Post, PostFrontMatter } from 'valaxy'
 import type { ComputedRef } from 'vue'
 import type { LocationQueryValue, RouteLocationNormalizedLoaded } from 'vue-router'
 import { isCategoryList } from 'valaxy'
@@ -38,7 +38,7 @@ export function getCategoryLink(category: string | CategoryList, page?: number) 
   return `/category/${category}${page ? `?page=${page}` : ''}`
 }
 
-export function getPostLink(post: Post) {
+export function getPostLink(post: Post | Partial<PostFrontMatter>) {
   return post.path
 }
 

@@ -2,6 +2,10 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+defineOptions({
+  name: 'PostLayout',
+})
+
 const route = useRoute()
 const frontmatter = computed(() => route.meta.frontmatter)
 
