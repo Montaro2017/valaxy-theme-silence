@@ -1,6 +1,5 @@
 import type { ThemeConfig } from 'valaxy-theme-silence'
 import { defineConfig } from 'valaxy'
-import { addonAutoExcerpt } from 'valaxy-addon-auto-excerpt'
 import themeConfig from './theme.config'
 
 /**
@@ -20,9 +19,6 @@ export default defineConfig<ThemeConfig>({
       '.java': 'vscode-icons:file-type-java',
     },
   },
-  addons: [
-    addonAutoExcerpt(),
-  ],
   themeConfig,
   devtools: false,
 })

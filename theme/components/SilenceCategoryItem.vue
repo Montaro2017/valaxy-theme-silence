@@ -106,7 +106,7 @@ const hasChildren = computed(() => children.value.length > 0)
   display: inline-block;
   position: absolute;
   height: calc(100% - 22px);
-  transform: translate(calc(1.5em + 1px));
+  transform: translate(calc(1.5em));
   border-left: 2px solid var(--panel-bg-color);
 }
 
@@ -117,6 +117,6 @@ const hasChildren = computed(() => children.value.length > 0)
   left: 0;
   position: absolute;
   border-top: 2px solid var(--panel-bg-color);
-  transform: translate(calc(-1.5em - 1px));
+  transform: translate(calc(-1.5em));
 }
 </style>

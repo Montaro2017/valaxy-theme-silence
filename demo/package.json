@@ -11,9 +11,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "radash": "^12.1.1",
-    "valaxy": "^0.26.6",
-    "valaxy-addon-auto-excerpt": "file:D:\\MyProjects\\valaxy-addon-auto-excerpt",
+    "valaxy": "0.26.8",
     "valaxy-theme-silence": "workspace:*"
   }
 }
