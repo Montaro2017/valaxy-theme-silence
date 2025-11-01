@@ -3,20 +3,19 @@ import type { Post } from 'valaxy'
 import { useSiteConfig } from 'valaxy'
 import { computed } from 'vue'
 import { useThemeConfig } from '../composables'
-import { useSignature, useSponsor } from '../utils/theme'
 
 const props = defineProps<{
   frontmatter: Post
 }>()
 const siteConfig = useSiteConfig()
 
-const signature = useSignature()
-const sponsor = useSponsor()
+const license = computed(() => siteConfig.value.license)
+const sponsor = computed(() => siteConfig.value.sponsor)
 
 const themeConfig = useThemeConfig()
 
 const defaultToc = computed(() => {
-  return props.frontmatter.toc ?? themeConfig.value.post.toc?.active ?? false
+  return props.frontmatter.toc ?? false
 })
 
 const tocSerialNumber = computed(() => {
@@ -25,26 +24,23 @@ const tocSerialNumber = computed(() => {
 </script>
 
 <template>
-  <div class="silence-post">
+  <main class="silence-post">
     <header class="silence-post-title">
       {{ frontmatter.title }}
     </header>
-    <main>
-      <div class="max-w-none prose dark:prose-invert">
-        <ValaxyMd :frontmatter="frontmatter">
-          <slot name="main-content-md" />
-        </ValaxyMd>
-      </div>
-      <silence-signature v-if="signature.enable" :signature="signature" />
-      <silence-post-info :frontmatter="frontmatter" />
-      <silence-sponsor v-if="sponsor.enable" :sponsor="sponsor" />
-      <silence-post-nav />
-    </main>
-    <footer>
-      <silence-post-toc :default-toc="defaultToc" :serial-number="tocSerialNumber" />
-      <slot v-if="siteConfig.comment.enable && frontmatter.comment !== false" name="comment" />
-    </footer>
-  </div>
+    <div class="max-w-none prose dark:prose-invert">
+      <ValaxyMd :frontmatter="frontmatter">
+        <slot name="main-content-md" />
+      </ValaxyMd>
+    </div>
+    <silence-copyright v-if="license.enabled" />
+    <silence-post-info :frontmatter="frontmatter" />
+    <silence-sponsor v-if="sponsor.enable" />
+    <silence-post-nav />
+    <silence-post-desc :frontmatter="frontmatter" />
+    <slot v-if="siteConfig.comment.enable && frontmatter.comment !== false" name="comment" />
+    <silence-post-toc :default-toc="defaultToc" :serial-number="tocSerialNumber" />
+  </main>
 </template>
 
 <style>

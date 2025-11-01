@@ -1,36 +1,20 @@
 <script lang="ts" setup>
-defineProps<{
-  sponsor: {
-    text?: string
-    alipay?: string
-    paypal?: string
-    wechat?: string
-  }
-}>()
+import { useSiteConfig } from 'valaxy'
+import { computed } from 'vue'
+
+const sponsor = computed(() => useSiteConfig().value.sponsor)
 </script>
 
 <template>
   <div class="silence-sponsor">
     <div class="silence-sponsor-text">
-      {{ sponsor.text }}
+      {{ sponsor.description }}
     </div>
     <div class="silence-sponsor-items">
-      <div v-if="sponsor.alipay" class="sponsor-item sponsor-item-alipay">
-        <silence-icon icon="i-ant-design-alipay-outlined" />
+      <div v-for="method in sponsor.methods" :key="method.name" class="sponsor-item">
+        <silence-icon :icon="method.icon" />
         <div class="silence-sponsor-qr-code">
-          <img :src="sponsor.alipay" alt="支付宝二维码" />
-        </div>
-      </div>
-      <div v-if="sponsor.wechat" class="sponsor-item sponsor-item-wechat">
-        <silence-icon icon="i-ant-design-wechat-outlined" />
-        <div class="silence-sponsor-qr-code">
-          <img :src="sponsor.wechat" alt="微信二维码" />
-        </div>
-      </div>
-      <div v-if="sponsor.paypal" class="sponsor-item sponsor-item-paypal">
-        <silence-icon icon="i-ant-design-paypal-outlined" />
-        <div class="silence-sponsor-qr-code">
-          <img :src="sponsor.paypal" alt="PayPal二维码" />
+          <img :src="method.url" :alt="method.name">
         </div>
       </div>
     </div>
@@ -88,7 +72,7 @@ defineProps<{
   left: 50%;
   top: 0;
   display: none;
-  transform: translate(-50%, calc(-100%  - 20px));
+  transform: translate(-50%, calc(-100% - 20px));
   background: var(--blog-bg-color);
   box-shadow: var(--pane-box-shadow);
 }

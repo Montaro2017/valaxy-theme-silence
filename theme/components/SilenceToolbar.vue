@@ -1,26 +1,15 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
-import { useLayout } from 'valaxy'
+import { useOutline } from 'valaxy'
 import { computed, ref, useTemplateRef, watch } from 'vue'
 import { useThemeConfig } from '../composables'
 import { useSilenceAppStore } from '../store/app'
 import { scrollToTop } from '../utils/theme'
 
 const themeConfig = useThemeConfig()
-const postLayouts = computed(() => {
-  const layout = themeConfig.value.postLayout
-  if (!Array.isArray(layout)) {
-    return [layout]
-  }
-  return layout
-})
 
-const layout = useLayout()
 const showMore = ref(false)
-const tocBtn = computed(() => {
-  return postLayouts.value.includes(layout.value as string)
-})
 
 const silenceToolbar = useTemplateRef('silenceToolbar')
 onClickOutside(silenceToolbar, () => {
@@ -57,6 +46,11 @@ watch(showMore, (newValue) => {
 const silenceAppStore = useSilenceAppStore()
 const { toggleDark, toggleToc } = silenceAppStore
 const { color, isDark } = storeToRefs(silenceAppStore)
+
+const outline = useOutline()
+const { headers } = outline
+
+const hasToc = computed(() => headers.value.length > 0)
 </script>
 
 <template>
@@ -74,7 +68,7 @@ const { color, isDark } = storeToRefs(silenceAppStore)
     <div class="silence-toolbar-btn-top silence-toolbar-btn" @click="scrollToTop">
       <div class="i-material-symbols-light-keyboard-arrow-up" />
     </div>
-    <div v-if="tocBtn" class="silence-toolbar-toc silence-toolbar-btn" @click="toggleToc">
+    <div v-if="hasToc" class="silence-toolbar-toc silence-toolbar-btn" @click="toggleToc">
       <div class="i-material-symbols-light-menu" />
     </div>
     <div class="silence-toolbar-palette">

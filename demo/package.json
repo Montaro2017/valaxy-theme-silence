@@ -13,6 +13,7 @@
   "dependencies": {
     "radash": "^12.1.1",
     "valaxy": "^0.26.6",
-    "valaxy-theme-starter": "workspace:*"
+    "valaxy-addon-auto-excerpt": "file:D:\\MyProjects\\valaxy-addon-auto-excerpt",
+    "valaxy-theme-silence": "workspace:*"
   }
 }

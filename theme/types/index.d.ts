@@ -10,8 +10,6 @@ export interface ThemeConfig {
 
   toggleDarkWithCircleTransition?: boolean
 
-  postLayout?: string | string[]
-
   header?: Partial<{
     title: string
     navItems: NavItemWithChildren[]
@@ -46,18 +44,7 @@ export interface ThemeConfig {
   }>
 
   post: {
-    signature?: Partial<Signature>
-
-    sponsor?: {
-      enable?: boolean
-      text?: string
-      alipay?: string
-      paypal?: string
-      wechat?: string
-    }
-
     toc?: {
-      active?: boolean
       serialNumber?: boolean
     }
   }
@@ -72,14 +59,4 @@ export interface NavItem {
 
 export type NavItemWithChildren = NavItem & {
   children?: NavItem[]
-}
-
-export interface Signature {
-  enable: boolean
-  author: string
-  license: {
-    name: string
-    url: string
-  }
-  remark: string | null
 }

@@ -1,22 +1,22 @@
 {
-  "name": "valaxy-theme-starter",
+  "name": "valaxy-theme-silence",
   "type": "module",
-  "version": "0.3.4",
+  "version": "0.1.0",
   "packageManager": "pnpm@10.18.2",
   "author": {
-    "email": "me@yunyoujun.cn",
-    "name": "YunYouJun",
-    "url": "https://www.yunyoujun.cn"
+    "email": "kertlk@qq.com",
+    "name": "Montaro2017",
+    "url": "https://blog.montaro.cn"
   },
   "homepage": "https://starter.valaxy.site",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YunYouJun/valaxy-theme-starter"
+    "url": "https://github.com/Montaro2017/valaxy-theme-silence"
   },
   "keywords": [
     "valaxy",
     "theme",
-    "starter",
+    "silence",
     "vue"
   ],
   "main": "client/index.ts",

@@ -22,8 +22,6 @@ export const defaultThemeConfig: ThemeConfig = {
     '#673bb7',
     '#906f61',
   ],
-  postLayout: 'post',
-
   header: {
     // 头部导航
     navItems: [
@@ -60,19 +58,6 @@ export const defaultThemeConfig: ThemeConfig = {
     powered: {
       enable: true,
       withSilence: true,
-    },
-  },
-  post: {
-    signature: {
-      enable: true,
-      license: {
-        name: '署名-非商业性使用-相同方式共享 4.0 国际',
-        url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
-      },
-    },
-    sponsor: {
-      enable: false,
-      text: 'Buy me a cup of coffee ☕',
     },
   },
 }
