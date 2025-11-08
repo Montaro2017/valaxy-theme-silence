@@ -1,8 +1,25 @@
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { getSearchLink } from '../../utils/route'
+
+const keyword = ref<string | null>(null)
+
+function search() {
+  if (keyword.value == null || keyword.value.length <= 0) {
+    return
+  }
+  const searchLink = getSearchLink(keyword.value)
+  window.open(searchLink, '_blank')
+}
+</script>
+
 <template>
   <silence-sidebar-block title="搜索">
     <div class="silence-sidebar-search">
-      <input type="text">
-      <silence-button>找找看</silence-button>
+      <input v-model="keyword" type="text" @keyup.enter="search">
+      <silence-button @click="search">
+        找找看
+      </silence-button>
     </div>
   </silence-sidebar-block>
 </template>

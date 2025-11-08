@@ -60,6 +60,9 @@ export const defaultThemeConfig: ThemeConfig = {
       withSilence: true,
     },
   },
+  post: {
+    dateFormat: 'YYYY-MM-DD'
+  }
 }
 
 // write a vite plugin
@@ -78,7 +81,7 @@ export function themePlugin(options: ResolvedValaxyOptions<ThemeConfig>): Plugin
         let colorVars = ''
         if (colors && colors.length > 0) {
           colorVars += '\n/* 动态生成的主题颜色变量 */\n'
-          colors.forEach((color, _) => {
+          colors.forEach((color: string, _: any) => {
             color = color.trim()
             colorVars += `[color="${color}"] {\n  --theme-color: ${color};\n}\n`
           })

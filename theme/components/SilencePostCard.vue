@@ -1,9 +1,17 @@
 <script lang="ts" setup>
-import type { Post } from 'valaxy'
+import { dayjs, useLocaleTitle } from 'valaxy';
 import { computed } from 'vue'
+import { useThemeConfig } from '../composables'
 
 const props = withDefaults(defineProps<{
-  post: Post
+  post: Partial<{
+    title?: string | Record<string, string>,
+    path?: string,
+    link?: string,
+    date?: string | number | Date,
+    top?: number,
+    excerpt?: string,
+  }>
   pinMark?: boolean
 }>(), {
   pinMark: true,
@@ -11,25 +19,36 @@ const props = withDefaults(defineProps<{
 
 const post = computed(() => props.post)
 const pinMark = computed(() => props.pinMark)
+
+const localTitle = useLocaleTitle(post)
+const thtmeConfig = useThemeConfig()
+const dateFormat = computed(() => thtmeConfig.value.post?.dateFormat ?? 'YYYY-MM-DD')
+
+const date = computed(() => {
+  if (post.value.date) {
+    return dayjs(post.value.date).format(dateFormat.value)
+  }
+  return ''
+})
 </script>
 
 <template>
   <div class="silence-post-card">
-    <h2 class="silence-post-card-title" :title="post.title as string">
-      <app-link :to="post.path || ''" class="block">
+    <h2 class="silence-post-card-title" :title="localTitle">
+      <app-link :to="post.link ?? post.path ?? ''" class="block">
         <span v-if="pinMark && post.top" class="color-[var(--theme-color)] font-300">[置顶]</span>
         {{ post.title }}
       </app-link>
     </h2>
     <div class="silence-post-card-excerpt" v-html="post.excerpt" />
     <div class="silence-post-card-read-more">
-      <app-link :to="post.path || ''">
+      <app-link :to="post.link ?? post.path ?? ''">
         阅读全文
       </app-link>
     </div>
     <div class="silence-post-card-meta-info">
       <div class="silence-post-card-meta-info-date">
-        posted @ {{ post.date }}
+        posted @ {{ date }}
       </div>
     </div>
   </div>

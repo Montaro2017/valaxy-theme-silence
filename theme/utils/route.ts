@@ -45,3 +45,10 @@ export function getPostLink(post: Post | Partial<PostFrontMatter>) {
 export function getArchiveLink(archive: [string, { id: string, date: dayjs.Dayjs, posts: Post[] }]) {
   return `/archives#${archive[1].id}`
 }
+
+export function getSearchLink(keyword: string, pageNum?: number): string {
+  if (pageNum) {
+    return `/search?q=${keyword}&page=${pageNum}`
+  }
+  return `/search?q=${keyword}`
+}

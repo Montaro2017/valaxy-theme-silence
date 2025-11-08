@@ -5,7 +5,7 @@ import { setTitle } from './utils/theme'
 
 const route = useRoute()
 const title = computed(() => {
-  return route.meta.title as string ?? route.meta.frontmatter.title as string
+  return route.meta.title as string ?? route.meta.frontmatter?.title as string ?? ''
 })
 
 setTitle(title)

@@ -15,7 +15,7 @@ export interface ThemeConfig {
     navItems: NavItemWithChildren[]
   }>
 
-  sidebar: {
+  sidebar?: {
     avatar: string
     author?: string
     intro?: string
@@ -30,7 +30,7 @@ export interface ThemeConfig {
   /**
    * footer
    */
-  footer: Partial<{
+  footer?: Partial<{
     copyright: string
     beian: {
       enable: boolean
@@ -43,11 +43,12 @@ export interface ThemeConfig {
     }
   }>
 
-  post: {
+  post?: Partial<{
     toc?: {
       serialNumber?: boolean
     }
-  }
+    dateFormat?: string
+  }>
 
 }
 

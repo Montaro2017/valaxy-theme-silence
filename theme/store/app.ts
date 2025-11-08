@@ -1,7 +1,8 @@
-import { useStorage } from '@vueuse/core'
+import { isClient, useStorage } from '@vueuse/core'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { useValaxyDark } from 'valaxy'
 import { computed, ref, watch } from 'vue'
+
 import { useThemeConfig } from '../composables'
 
 export const useSilenceAppStore = defineStore('silence', () => {
@@ -10,21 +11,25 @@ export const useSilenceAppStore = defineStore('silence', () => {
   const color = useStorage('silence.color', themeConfig.value.colors?.[0] ?? '#ff5722')
 
   watch(color, () => {
-    document.documentElement.setAttribute('color', color.value)
+    if (isClient) {
+      document.documentElement.setAttribute('color', color.value)
+    }
   }, {
     immediate: true,
   })
 
-  const { isDark, toggleDark: toggleDarkWithoutTransition, toggleDarkWithTransition } = useValaxyDark({
+  const {isDark, toggleDark: toggleDarkWithoutTransition, toggleDarkWithTransition} = useValaxyDark({
     useDarkOptions: {
       selector: 'html',
       attribute: 'mode',
       valueDark: 'dark',
       valueLight: 'light',
-      onChanged: (isDark, defaultHandler, mode) => {
+      onChanged: (isDark: boolean | undefined, defaultHandler: (arg0: any) => void, mode: any) => {
         defaultHandler(mode)
         // valaxy自带html.dark样式
-        document.documentElement.classList.toggle('dark', isDark)
+        if (isClient) {
+          document.documentElement.classList.toggle('dark', isDark)
+        }
       },
     },
   })
@@ -36,8 +41,7 @@ export const useSilenceAppStore = defineStore('silence', () => {
           duration: 200,
         })
       }
-    }
-    else {
+    } else {
       return (_: MouseEvent) => {
         toggleDarkWithoutTransition()
       }
@@ -45,6 +49,7 @@ export const useSilenceAppStore = defineStore('silence', () => {
   })
 
   const toc = ref(false)
+
   function toggleToc() {
     toc.value = !toc.value
   }

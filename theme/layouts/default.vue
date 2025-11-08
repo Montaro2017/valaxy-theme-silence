@@ -9,7 +9,7 @@ defineOptions({
 const route = useRoute()
 const frontmatter = computed(() => route.meta.frontmatter)
 
-const sidebar = computed(() => frontmatter.value.sidebar ?? true)
+const sidebar = computed(() => frontmatter.value?.sidebar ?? true)
 </script>
 
 <template>
