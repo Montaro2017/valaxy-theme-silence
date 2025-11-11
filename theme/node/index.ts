@@ -61,8 +61,8 @@ export const defaultThemeConfig: ThemeConfig = {
     },
   },
   post: {
-    dateFormat: 'YYYY-MM-DD'
-  }
+    dateFormat: 'YYYY-MM-DD',
+  },
 }
 
 // write a vite plugin
@@ -74,7 +74,7 @@ export function themePlugin(options: ResolvedValaxyOptions<ThemeConfig>): Plugin
     name: 'valaxy-theme-starter',
     transform(code: string, id: string) {
       // 检查是否为theme/styles/vars.css文件
-      if (id.includes('theme/styles/vars.css')) {
+      if (id === `${options.themeRoot}/styles/vars.css`) {
         // 获取主题颜色数组
         const colors = themeConfig.colors || defaultThemeConfig.colors
         // 生成主题颜色CSS变量

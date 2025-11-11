@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useFuseSearch, useSiteConfig } from 'valaxy'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useThemePagination } from '../utils/pagination'
 import { getFirstQuery, getSearchLink } from '../utils/route'
@@ -10,9 +10,12 @@ defineOptions({
   name: 'SilenceSearch',
 })
 const route = useRoute()
-const keyword = getFirstQuery(route, 'q')
+const keyword = computed(() => getFirstQuery(route, 'q')?.value ?? '')
 const { results, fetchFuseListData } = useFuseSearch(keyword.value!)
-fetchFuseListData()
+
+onMounted(() => {
+  fetchFuseListData()
+})
 
 const title = computed(() => `${keyword.value} 的搜索结果（共${results.value?.length ?? 0}条）`)
 setTitle(`${keyword.value} - 搜索结果`)
