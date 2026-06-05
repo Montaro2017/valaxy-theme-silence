@@ -54,6 +54,7 @@ const sidebar = computed(() => {
 .silence-layout-content {
   flex: 1;
   max-width: 100%;
+  min-width: 0;
 }
 
 .silence-layout-wrapper {
